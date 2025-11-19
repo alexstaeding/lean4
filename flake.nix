@@ -89,7 +89,7 @@
               oldGlibcAArch = devShellWithDist pkgsDist-old-aarch;
             };
             # WASM build derivation
-            lean-wasm = pkgs.stdenv.mkDerivation {
+            packages.${system}.lean-wasm = pkgs.stdenv.mkDerivation {
               name = "lean-wasm";
               src = ./.;
 
