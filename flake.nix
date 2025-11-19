@@ -107,9 +107,6 @@
                 pkg-config
               ];
 
-              # Disable sandboxing issues with emscripten cache
-              __noChroot = true;
-
               preConfigure = ''
                 export GIT_SSL_CAINFO=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt
                 export SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt
