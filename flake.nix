@@ -88,6 +88,71 @@
               oldGlibc = devShellWithDist pkgsDist-old;
               oldGlibcAArch = devShellWithDist pkgsDist-old-aarch;
             };
+            # WASM build derivation
+            lean-wasm = pkgs.stdenv.mkDerivation {
+              name = "lean-wasm";
+              src = ./.;
+
+              nativeBuildInputs = with pkgs; [
+                cmake
+                git
+                emscripten
+                python3
+                cacert
+                pkg-config
+              ];
+
+              buildInputs = with pkgs; [
+                libuv
+                pkg-config
+              ];
+
+              # Disable sandboxing issues with emscripten cache
+              __noChroot = true;
+
+              preConfigure = ''
+                export GIT_SSL_CAINFO=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt
+                export SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt
+                export PKG_CONFIG_PATH="${pkgs.libuv}/lib/pkgconfig:''${PKG_CONFIG_PATH:-}"
+
+                # Disable ccache or configure it to use a writable directory
+                export CCACHE_DISABLE=1
+                export CCACHE_DIR=$TMPDIR/ccache
+                mkdir -p $CCACHE_DIR
+              '';
+
+              configurePhase = ''
+                export EM_CACHE=$TMPDIR/emscripten-cache
+                mkdir -p $EM_CACHE
+                mkdir -p build-wasm
+                cd build-wasm
+
+                emcmake cmake .. \
+                  -DCMAKE_BUILD_TYPE=Release \
+                  -DSTAGE0_CMAKE_CXX_COMPILER=clang++ \
+                  -DSTAGE0_CMAKE_C_COMPILER=clang \
+                  -DUSE_GMP=OFF \
+                  -DMMAP=OFF \
+                  -DSTAGE0_MMAP=OFF \
+                  -DSTAGE0_USE_GMP=OFF \
+                  -DCMAKE_INSTALL_PREFIX=$out \
+                  -DLEAN_INSTALL_SUFFIX=-wasm32
+              '';
+
+              buildPhase = ''
+                emmake make -j$NIX_BUILD_CORES
+              '';
+
+              installPhase = ''
+                make install
+              '';
+
+              meta = {
+                description = "Lean theorem prover compiled to WebAssembly";
+                platforms = pkgs.lib.platforms.unix;
+              };
+            };
+
           }
         )
         [
