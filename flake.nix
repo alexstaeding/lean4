@@ -27,6 +27,13 @@
 
             llvmPackages = pkgs.llvmPackages_15;
 
+            mimalloc = pkgs.fetchFromGitHub {
+              owner = "microsoft";
+              repo = "mimalloc";
+              tag = "v2.2.3";
+              hash = "sha256-B0gngv16WFLBtrtG5NqA2m5e95bYVcQraeITcOX9A74=";
+            };
+
             devShellWithDist =
               pkgsDist:
               pkgs.mkShell.override
@@ -105,22 +112,30 @@
               buildInputs = with pkgs; [
                 libuv
                 pkg-config
+                cadical
+                gmp
               ];
 
-              preConfigure = ''
-                export GIT_SSL_CAINFO=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt
-                export SSL_CERT_FILE=${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt
-                export PKG_CONFIG_PATH="${pkgs.libuv}/lib/pkgconfig:''${PKG_CONFIG_PATH:-}"
+              postPatch =
+                let
+                  pattern = "\${LEAN_BINARY_DIR}/../mimalloc/src/mimalloc";
+                in
+                ''
+                  # Remove tests that fails in sandbox.
+                  # It expects `sourceRoot` to be a git repository.
+                  rm -rf src/lake/examples/git/
+                  for file in stage0/src/CMakeLists.txt stage0/src/runtime/CMakeLists.txt src/CMakeLists.txt src/runtime/CMakeLists.txt; do
+                    substituteInPlace "$file" \
+                      --replace-fail '${pattern}' '${mimalloc}'
+                  done
+                '';
 
-                # Disable ccache or configure it to use a writable directory
-                export CCACHE_DISABLE=1
-                export CCACHE_DIR=$TMPDIR/ccache
-                mkdir -p $CCACHE_DIR
+              preConfigure = ''
+                export EM_CACHE=$TMPDIR/emscripten-cache
+                mkdir -p $EM_CACHE
               '';
 
               configurePhase = ''
-                export EM_CACHE=$TMPDIR/emscripten-cache
-                mkdir -p $EM_CACHE
                 mkdir -p build-wasm
                 cd build-wasm
 
