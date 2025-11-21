@@ -93,44 +93,6 @@
               name = "lean-wasm";
               src = ./.;
 
-              # gmp-emscripten = pkgs.stdenv.mkDerivation {
-              #   name = "gmp-emscripten";
-
-              #   src = pkgs.fetchurl {
-              #     url = "https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz";
-              #     sha256 = "sha256-o8K4AgG4nmhhb0rTC8Zq7kknw85Q4zkpyoGdXENTiJg=";
-              #   };
-
-              #   nativeBuildInputs = [
-              #     pkgs.emscripten
-              #     pkgs.python3
-              #     pkgs.pkg-config
-              #   ];
-
-              #   configurePhase = ''
-              #     # Emscripten doesn't support assembly, disable it
-              #     emconfigure ./configure \
-              #       --prefix=$out \
-              #       --host=wasm32-unknown-emscripten \
-              #       --disable-shared \
-              #       --enable-static \
-              #       --disable-assembly \
-              #       ac_cv_func_malloc_0_nonnull=yes \
-              #       ac_cv_func_realloc_0_nonnull=yes \
-              #       CFLAGS="-O2 -flto"
-              #   '';
-
-              #   buildPhase = ''
-              #     emmake make -j$NIX_BUILD_CORES
-              #   '';
-
-              #   installPhase = ''
-              #     make install
-              #   '';
-
-              #   doCheck = false;
-              # };
-
               mimalloc = pkgs.stdenv.mkDerivation {
                 name = "mimalloc-patched";
                 src = pkgs.fetchFromGitHub {
@@ -202,6 +164,11 @@
                     stage0/src/bin/lean.in \
                     stage0/src/bin/leanc.in \
                     stage0/src/stdlib.make.in \
+                    src/lean.mk.in \
+                    src/bin/leanmake \
+                    src/bin/lean.in \
+                    src/bin/leanc.in \
+                    src/stdlib.make.in \
                   ; do
                     substituteInPlace "$file" \
                       --replace-fail '/usr/bin/env bash' '${pkgs.bash}/bin/bash'
@@ -210,8 +177,6 @@
 
               preConfigure = ''
                 patchShebangs stage0/src/bin/ src/bin/
-
-
               '';
               # export CFLAGS="-I${pkgs.gmp.dev}/include -I${pkgs.libuv.dev}/include"
               # export CXXFLAGS="-I${pkgs.gmp.dev}/include -I${pkgs.libuv.dev}/include"
@@ -223,7 +188,8 @@
                 cd build-wasm
 
                 emcmake cmake .. \
-                  -DUSE_GMP="off"
+                  -DUSE_GMP="off" \
+                  -DUSE_LAKE="off"
 
                 runHook postConfigure
               '';
@@ -237,6 +203,9 @@
                 # find build-wasm/stage0 -type f \( -name "*.make" -o -name "Makefile" \) \
                 #   -exec sed -i "s|/usr/bin/env|${pkgs.coreutils}/bin/env|g" {} \;
                 emmake make -j$NIX_BUILD_CORES
+
+                echo "=== After stage0 build ==="
+                find build-wasm/stage0/bin/ -type f -executable 2>/dev/null || echo "No executables found"
                 runHook postBuild
               '';
 
