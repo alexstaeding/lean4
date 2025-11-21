@@ -141,6 +141,8 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
     string(APPEND LEANC_EXTRA_CC_FLAGS " -pthread")
     string(APPEND LEAN_EXTRA_CXX_FLAGS " -D LEAN_EMSCRIPTEN ${EMSCRIPTEN_SETTINGS}")
     string(APPEND LEAN_EXTRA_LINKER_FLAGS " ${EMSCRIPTEN_SETTINGS}")
+    message(STATUS "CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
+    message(STATUS "LEAN_EXTRA_CXX_FLAGS: ${LEAN_EXTRA_CXX_FLAGS}")
 endif()
 
 # Added for CTest
@@ -256,7 +258,7 @@ endif ()
 if("${USE_GMP}" MATCHES "ON")
   set(CMAKE_CXX_FLAGS                "-D LEAN_USE_GMP ${CMAKE_CXX_FLAGS}")
   if("${CMAKE_SYSTEM_NAME}" MATCHES "Emscripten")
-    include_directories(${GMP_INSTALL_PREFIX}/include)
+    include_directories(${GMP_INCLUDE_DIR})
     set(GMP_LIBRARIES "${GMP_INSTALL_PREFIX}/lib/libgmp.a")
   else()
     # GMP

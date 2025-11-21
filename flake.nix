@@ -27,13 +27,6 @@
 
             llvmPackages = pkgs.llvmPackages_15;
 
-            mimalloc = pkgs.fetchFromGitHub {
-              owner = "microsoft";
-              repo = "mimalloc";
-              tag = "v2.2.3";
-              hash = "sha256-B0gngv16WFLBtrtG5NqA2m5e95bYVcQraeITcOX9A74=";
-            };
-
             devShellWithDist =
               pkgsDist:
               pkgs.mkShell.override
@@ -96,24 +89,93 @@
               oldGlibcAArch = devShellWithDist pkgsDist-old-aarch;
             };
             # WASM build derivation
-            packages.${system}.lean-wasm = pkgs.stdenv.mkDerivation {
+            packages.${system}.lean-wasm = pkgs.buildEmscriptenPackage (finalAttrs: {
               name = "lean-wasm";
               src = ./.;
+
+              # gmp-emscripten = pkgs.stdenv.mkDerivation {
+              #   name = "gmp-emscripten";
+
+              #   src = pkgs.fetchurl {
+              #     url = "https://gmplib.org/download/gmp/gmp-6.3.0.tar.xz";
+              #     sha256 = "sha256-o8K4AgG4nmhhb0rTC8Zq7kknw85Q4zkpyoGdXENTiJg=";
+              #   };
+
+              #   nativeBuildInputs = [
+              #     pkgs.emscripten
+              #     pkgs.python3
+              #     pkgs.pkg-config
+              #   ];
+
+              #   configurePhase = ''
+              #     # Emscripten doesn't support assembly, disable it
+              #     emconfigure ./configure \
+              #       --prefix=$out \
+              #       --host=wasm32-unknown-emscripten \
+              #       --disable-shared \
+              #       --enable-static \
+              #       --disable-assembly \
+              #       ac_cv_func_malloc_0_nonnull=yes \
+              #       ac_cv_func_realloc_0_nonnull=yes \
+              #       CFLAGS="-O2 -flto"
+              #   '';
+
+              #   buildPhase = ''
+              #     emmake make -j$NIX_BUILD_CORES
+              #   '';
+
+              #   installPhase = ''
+              #     make install
+              #   '';
+
+              #   doCheck = false;
+              # };
+
+              mimalloc = pkgs.stdenv.mkDerivation {
+                name = "mimalloc-patched";
+                src = pkgs.fetchFromGitHub {
+                  owner = "microsoft";
+                  repo = "mimalloc";
+                  tag = "v2.2.3";
+                  hash = "sha256-B0gngv16WFLBtrtG5NqA2m5e95bYVcQraeITcOX9A74=";
+                };
+                patches = [ ./patches/mimalloc-disable-tests.patch ];
+                installPhase = ''
+                  cp -r . $out
+                '';
+              };
+
+              libuv = pkgs.stdenv.mkDerivation {
+                name = "libuv-patched";
+                src = pkgs.fetchFromGitHub {
+                  owner = "libuv";
+                  repo = "libuv";
+                  tag = "v1.48.0";
+                  hash = "sha256-U68BmIQNpmIy3prS7LkYl+wvDJQNikoeFiKh50yQFoA=";
+                };
+                patches = [ ./patches/libuv-fix.patch ];
+                installPhase = ''
+                  cp -r . $out
+                '';
+              };
 
               nativeBuildInputs = with pkgs; [
                 cmake
                 git
-                emscripten
                 python3
                 cacert
                 pkg-config
+                # finalAttrs.gmp-emscripten
               ];
 
               buildInputs = with pkgs; [
-                libuv
                 pkg-config
                 cadical
-                gmp
+              ];
+
+              patches = [
+                ./patches/mimalloc-src.patch
+                ./patches/libuv-src.patch
               ];
 
               postPatch =
@@ -124,38 +186,62 @@
                   # Remove tests that fails in sandbox.
                   # It expects `sourceRoot` to be a git repository.
                   rm -rf src/lake/examples/git/
+                  substituteInPlace CMakeLists.txt \
+                    --replace-fail 'MIMALLOC-SRC' '${finalAttrs.mimalloc}'
+                  substituteInPlace stage0/src/CMakeLists.txt src/CMakeLists.txt \
+                    --replace-fail 'LIBUV-SRC' '${finalAttrs.libuv}'
+
                   for file in stage0/src/CMakeLists.txt stage0/src/runtime/CMakeLists.txt src/CMakeLists.txt src/runtime/CMakeLists.txt; do
                     substituteInPlace "$file" \
-                      --replace-fail '${pattern}' '${mimalloc}'
+                      --replace-fail '${pattern}' '${finalAttrs.mimalloc}'
+                  done
+
+                  for file in \
+                    stage0/src/lean.mk.in \
+                    stage0/src/bin/leanmake \
+                    stage0/src/bin/lean.in \
+                    stage0/src/bin/leanc.in \
+                    stage0/src/stdlib.make.in \
+                  ; do
+                    substituteInPlace "$file" \
+                      --replace-fail '/usr/bin/env bash' '${pkgs.bash}/bin/bash'
                   done
                 '';
 
               preConfigure = ''
-                export EM_CACHE=$TMPDIR/emscripten-cache
-                mkdir -p $EM_CACHE
-              '';
+                patchShebangs stage0/src/bin/ src/bin/
 
+
+              '';
+              # export CFLAGS="-I${pkgs.gmp.dev}/include -I${pkgs.libuv.dev}/include"
+              # export CXXFLAGS="-I${pkgs.gmp.dev}/include -I${pkgs.libuv.dev}/include"
+              # export LDFLAGS="-L${pkgs.gmp}/lib -L${pkgs.libuv}/lib"
               configurePhase = ''
+                runHook preConfigure
+                export EM_CACHE=$TMPDIR/emcache
                 mkdir -p build-wasm
                 cd build-wasm
 
                 emcmake cmake .. \
-                  -DCMAKE_BUILD_TYPE=Release \
-                  -DSTAGE0_CMAKE_CXX_COMPILER=clang++ \
-                  -DSTAGE0_CMAKE_C_COMPILER=clang \
-                  -DUSE_GMP=OFF \
-                  -DMMAP=OFF \
-                  -DSTAGE0_MMAP=OFF \
-                  -DSTAGE0_USE_GMP=OFF \
-                  -DCMAKE_INSTALL_PREFIX=$out \
-                  -DLEAN_INSTALL_SUFFIX=-wasm32
+                  -DUSE_GMP="off"
+
+                runHook postConfigure
               '';
 
+                  # -DGMP_INCLUDE_DIR="${finalAttrs.gmp-emscripten}/include" \
+                  # -DGMP_INSTALL_PREFIX="${finalAttrs.gmp-emscripten}"
               buildPhase = ''
+                # export EMCC_DEBUG=2
+                runHook preBuild
+                echo "Replacing1 in path $(pwd)"
+                # find build-wasm/stage0 -type f \( -name "*.make" -o -name "Makefile" \) \
+                #   -exec sed -i "s|/usr/bin/env|${pkgs.coreutils}/bin/env|g" {} \;
                 emmake make -j$NIX_BUILD_CORES
+                runHook postBuild
               '';
 
               installPhase = ''
+                runHook preInstall
                 make install
               '';
 
@@ -163,8 +249,7 @@
                 description = "Lean theorem prover compiled to WebAssembly";
                 platforms = pkgs.lib.platforms.unix;
               };
-            };
-
+            });
           }
         )
         [
