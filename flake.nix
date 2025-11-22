@@ -173,14 +173,17 @@
                     substituteInPlace "$file" \
                       --replace-fail '/usr/bin/env bash' '${pkgs.bash}/bin/bash'
                   done
+
+                  substituteInPlace stage0/src/stdlib.make.in src/stdlib.make.in \
+                    --replace-fail \
+                      'OUT="$'{LIB}'"' \
+                      'OUT="$'{CMAKE_BINARY_DIR}'/$'{LIB}'"'
                 '';
 
               preConfigure = ''
                 patchShebangs stage0/src/bin/ src/bin/
               '';
-              # export CFLAGS="-I${pkgs.gmp.dev}/include -I${pkgs.libuv.dev}/include"
-              # export CXXFLAGS="-I${pkgs.gmp.dev}/include -I${pkgs.libuv.dev}/include"
-              # export LDFLAGS="-L${pkgs.gmp}/lib -L${pkgs.libuv}/lib"
+
               configurePhase = ''
                 runHook preConfigure
                 export EM_CACHE=$TMPDIR/emcache
@@ -194,18 +197,20 @@
                 runHook postConfigure
               '';
 
-                  # -DGMP_INCLUDE_DIR="${finalAttrs.gmp-emscripten}/include" \
-                  # -DGMP_INSTALL_PREFIX="${finalAttrs.gmp-emscripten}"
               buildPhase = ''
                 # export EMCC_DEBUG=2
                 runHook preBuild
-                echo "Replacing1 in path $(pwd)"
-                # find build-wasm/stage0 -type f \( -name "*.make" -o -name "Makefile" \) \
-                #   -exec sed -i "s|/usr/bin/env|${pkgs.coreutils}/bin/env|g" {} \;
+
                 emmake make -j$NIX_BUILD_CORES
 
-                echo "=== After stage0 build ==="
-                find build-wasm/stage0/bin/ -type f -executable 2>/dev/null || echo "No executables found"
+                # Find and show the problematic line
+                if [ -f stage1/share/lean/lean.mk ]; then
+                  echo "=== Line 167 of stage1/share/lean/lean.mk ==="
+                  sed -n '165,169p' stage1/share/lean/lean.mk
+                else
+                  echo "=== stage1/share/lean/lean.mk not found in $(pwd)"
+                fi
+
                 runHook postBuild
               '';
 
