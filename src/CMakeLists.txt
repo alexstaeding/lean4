@@ -140,9 +140,9 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
     # From https://emscripten.org/docs/compiling/WebAssembly.html#backends:
     # > The simple and safe thing is to pass all -s flags at both compile and link time.
     set(EMSCRIPTEN_SETTINGS "-s ALLOW_MEMORY_GROWTH=1 -fwasm-exceptions -pthread -fPIC -sASSERTIONS=2 -sRUNTIME_DEBUG=1")
-    string(APPEND LEANC_EXTRA_CC_FLAGS " -pthread -fPIC -fwasm-exceptions -gsource-map --profiling")
-    string(APPEND LEAN_EXTRA_CXX_FLAGS " -fPIC -fwasm-exceptions -gsource-map --profiling -D LEAN_EMSCRIPTEN ${EMSCRIPTEN_SETTINGS}")
-    string(APPEND LEAN_EXTRA_LINKER_FLAGS " -fPIC -fwasm-exceptions -gsource-map --profiling ${EMSCRIPTEN_SETTINGS}")
+    string(APPEND LEANC_EXTRA_CC_FLAGS " -pthread -fPIC -fwasm-exceptions -gsource-map --profiling -z stack-size=67108864")
+    string(APPEND LEAN_EXTRA_CXX_FLAGS " -fPIC -fwasm-exceptions -gsource-map --profiling -z stack-size=67108864 -D LEAN_EMSCRIPTEN ${EMSCRIPTEN_SETTINGS}")
+    string(APPEND LEAN_EXTRA_LINKER_FLAGS " -fPIC -fwasm-exceptions -gsource-map --profiling -z stack-size=67108864 ${EMSCRIPTEN_SETTINGS}")
 endif()
 
 # Added for CTest
