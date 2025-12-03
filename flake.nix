@@ -223,6 +223,7 @@
                 emcmake cmake .. \
                   -DUSE_GMP="off" \
                   -DUSE_LAKE="off" \
+                  -DUSE_MIMALLOC="off" \
                   -DCMAKE_EXE_LINKER_FLAGS="-fPIC" \
                   -DCMAKE_SHARED_LINKER_FLAGS="-fPIC" \
                   -DCMAKE_BUILD_TYPE=Debug
