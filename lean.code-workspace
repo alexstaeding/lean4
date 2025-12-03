@@ -28,6 +28,11 @@
 			"editor.rulers": [
 				100
 			]
+		},
+		"files.associations": {
+			"flake.lock": "json",
+			"complex": "cpp",
+			"valarray": "cpp"
 		}
 	},
 	"tasks": {

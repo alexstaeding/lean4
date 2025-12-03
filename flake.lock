@@ -2,15 +2,18 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1745636243,
-        "narHash": "sha256-kbNvlQZf8wwok3d2X1kM/TlXH/MZ+03ZNv+IPPBx+DM=",
-        "rev": "f771eb401a46846c1aebd20552521b233dd7e18b",
-        "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable/nixos-25.05pre789333.f771eb401a46/nixexprs.tar.xz"
+        "lastModified": 1764766772,
+        "narHash": "sha256-J5fGJliTuyHdmq7TzVsFyiD7jGxGWgWGdcCmxcatItY=",
+        "owner": "alexstaeding",
+        "repo": "nixpkgs",
+        "rev": "ef5b6506cde880303966f6957c8e104daec60b8f",
+        "type": "github"
       },
       "original": {
-        "type": "tarball",
-        "url": "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
+        "owner": "alexstaeding",
+        "ref": "emscripten-4.0.21",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs-old": {

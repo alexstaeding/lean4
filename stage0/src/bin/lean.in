@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
 # ONLY FOR WEB ASSEMBLY BUILD
-node --stack-size=8192 ${CMAKE_BINARY_DIR}/bin/lean.js $@
-
+node --stack-size=32768 \
+  --max-old-space-size=32768 \
+  --unhandled-rejections=strict \
+  --trace-warnings \
+  --trace-uncaught \
+  --report-uncaught-exception \
+  ${CMAKE_BINARY_DIR}/bin/lean.js "$@" 2>&1

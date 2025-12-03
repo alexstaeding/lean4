@@ -2,7 +2,7 @@
   description = "Lean development flake. Not intended for end users.";
 
   # We use channels so we're not affected by GitHub's rate limits
-  inputs.nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
+  inputs.nixpkgs.url = "github:alexstaeding/nixpkgs/emscripten-4.0.21";
   # old nixpkgs used for portable release with older glibc (2.27)
   inputs.nixpkgs-old.url = "https://channels.nixos.org/nixos-19.03/nixexprs.tar.xz";
   inputs.nixpkgs-old.flake = false;
@@ -25,7 +25,7 @@
               localSystem.config = "aarch64-unknown-linux-gnu";
             };
 
-            llvmPackages = pkgs.llvmPackages_15;
+            llvmPackages = pkgs.llvmPackages_21;
 
             devShellWithDist =
               pkgsDist:
@@ -127,6 +127,8 @@
                 python3
                 cacert
                 pkg-config
+                nodejs_24
+                ccache
                 # finalAttrs.gmp-emscripten
               ];
 
@@ -174,10 +176,32 @@
                       --replace-fail '/usr/bin/env bash' '${pkgs.bash}/bin/bash'
                   done
 
+                  # substituteInPlace stage0/src/stdlib.make.in src/stdlib.make.in \
+                  #   --replace-fail \
+                  #     'OUT="$'{LIB}'"' \
+                  #     'OUT="$'{CMAKE_BINARY_DIR}'/$'{LIB}'"'
+
+                  substituteInPlace stage0/src/lean.mk.in src/lean.mk.in \
+                    --replace-fail \
+                      'TEMP_OUT = $(OUT)/temp' \
+                      'TEMP_OUT = $(OUT)/temp
+                        $(info DEBUG: OUT=$(OUT) TEMP_OUT=$(TEMP_OUT) PWD=$(shell pwd))'
+
                   substituteInPlace stage0/src/stdlib.make.in src/stdlib.make.in \
                     --replace-fail \
                       'OUT="$'{LIB}'"' \
-                      'OUT="$'{CMAKE_BINARY_DIR}'/$'{LIB}'"'
+                      'OUT="$'{CMAKE_BINARY_DIR}'/$'{LIB}'"' \
+                    --replace-fail \
+                      'LIB_OUT="$'{LIB}'/lean"' \
+                      'LIB_OUT="$'{CMAKE_BINARY_DIR}'/$'{LIB}'/lean"' \
+                    --replace-fail \
+                      'OLEAN_OUT="$'{LIB}'/lean"' \
+                      'OLEAN_OUT="$'{CMAKE_BINARY_DIR}'/$'{LIB}'/lean"'
+
+                  substituteInPlace stage0/src/stdlib.make.in src/stdlib.make.in \
+                    --replace-fail \
+                      '+"$'{LEAN_BIN}'/leanmake" -C lake lib lib.export ../$'{LIB}'/temp/LakeMain.o.export  PKG=Lake $(LEANMAKE_OPTS) OUT="../$'{LIB}'" LIB_OUT="../$'{LIB}'/lean" TEMP_OUT="../$'{LIB}'/temp" OLEAN_OUT="../$'{LIB}'/lean" EXTRA_SRC_ROOTS=LakeMain.lean' \
+                      '+"$'{LEAN_BIN}'/leanmake" -C lake lib lib.export $'{CMAKE_BINARY_DIR}'/$'{LIB}'/temp/LakeMain.o.export  PKG=Lake $(LEANMAKE_OPTS) OUT="$'{CMAKE_BINARY_DIR}'/$'{LIB}'" LIB_OUT="$'{CMAKE_BINARY_DIR}'/$'{LIB}'/lean" TEMP_OUT="$'{CMAKE_BINARY_DIR}'/$'{LIB}'/temp" OLEAN_OUT="$'{CMAKE_BINARY_DIR}'/$'{LIB}'/lean" EXTRA_SRC_ROOTS=LakeMain.lean'
                 '';
 
               preConfigure = ''
@@ -187,29 +211,34 @@
               configurePhase = ''
                 runHook preConfigure
                 export EM_CACHE=$TMPDIR/emcache
+                export CCACHE_DIR="$TMPDIR/ccache"
+                export CFLAGS="-fPIC"
+                export CXXFLAGS="-fPIC"
+                export LDFLAGS="-fPIC"
+                export NODE_OPTIONS="--max-old-space-size=8192"
+                mkdir -p "$CCACHE_DIR"
                 mkdir -p build-wasm
                 cd build-wasm
 
                 emcmake cmake .. \
                   -DUSE_GMP="off" \
-                  -DUSE_LAKE="off"
+                  -DUSE_LAKE="off" \
+                  -DCMAKE_EXE_LINKER_FLAGS="-fPIC" \
+                  -DCMAKE_SHARED_LINKER_FLAGS="-fPIC" \
+                  -DCMAKE_BUILD_TYPE=Debug
 
                 runHook postConfigure
               '';
 
               buildPhase = ''
-                # export EMCC_DEBUG=2
+                export EMCC_DEBUG=2
                 runHook preBuild
+                export CFLAGS="-fPIC"
+                export CXXFLAGS="-fPIC"
+                export LDFLAGS="-fPIC"
+                export NODE_OPTIONS="--max-old-space-size=8192"
 
-                emmake make -j$NIX_BUILD_CORES
-
-                # Find and show the problematic line
-                if [ -f stage1/share/lean/lean.mk ]; then
-                  echo "=== Line 167 of stage1/share/lean/lean.mk ==="
-                  sed -n '165,169p' stage1/share/lean/lean.mk
-                else
-                  echo "=== stage1/share/lean/lean.mk not found in $(pwd)"
-                fi
+                emmake make -j$NIX_BUILD_CORES VERBOSE=1
 
                 runHook postBuild
               '';
