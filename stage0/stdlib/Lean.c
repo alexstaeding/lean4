@@ -188,6 +188,8 @@ lean_dec_ref(res);
 res = initialize_Lean_DefEqAttrib(builtin);
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
+fprintf(stderr, "[Lean Shell Init] Invoking initialize_Lean_Shell\n");
+fflush(stderr);
 res = initialize_Lean_Shell(builtin);
 if (lean_io_result_is_error(res)) return res;
 lean_dec_ref(res);
