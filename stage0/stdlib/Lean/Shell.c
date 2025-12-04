@@ -4434,6 +4434,11 @@ if (lean_io_result_is_error(res)) return res;
 fprintf(stderr, "[Lean Shell Init] Calling lean_dec_ref\n");
 fflush(stderr);
 lean_dec_ref(res);
+
+fprintf(stderr, "[Lean Shell Init] Starting string constant initialization\n");
+fflush(stderr);
+fprintf(stderr, "[Lean Shell Init] Initializing shortVersionString constants\n");
+fflush(stderr);
 l___private_Lean_Shell_0__Lean_shortVersionString___closed__0 = _init_l___private_Lean_Shell_0__Lean_shortVersionString___closed__0();
 lean_mark_persistent(l___private_Lean_Shell_0__Lean_shortVersionString___closed__0);
 l___private_Lean_Shell_0__Lean_shortVersionString___closed__1 = _init_l___private_Lean_Shell_0__Lean_shortVersionString___closed__1();
@@ -4454,6 +4459,8 @@ l___private_Lean_Shell_0__Lean_shortVersionString___closed__9 = _init_l___privat
 lean_mark_persistent(l___private_Lean_Shell_0__Lean_shortVersionString___closed__9);
 l___private_Lean_Shell_0__Lean_shortVersionString = _init_l___private_Lean_Shell_0__Lean_shortVersionString();
 lean_mark_persistent(l___private_Lean_Shell_0__Lean_shortVersionString);
+fprintf(stderr, "[Lean Shell Init] Initializing versionHeader constants\n");
+fflush(stderr);
 l___private_Lean_Shell_0__Lean_versionHeader___closed__0 = _init_l___private_Lean_Shell_0__Lean_versionHeader___closed__0();
 lean_mark_persistent(l___private_Lean_Shell_0__Lean_versionHeader___closed__0);
 l___private_Lean_Shell_0__Lean_versionHeader___closed__1 = _init_l___private_Lean_Shell_0__Lean_versionHeader___closed__1();
@@ -4476,6 +4483,8 @@ l___private_Lean_Shell_0__Lean_versionHeader___closed__10 = _init_l___private_Le
 lean_mark_persistent(l___private_Lean_Shell_0__Lean_versionHeader___closed__10);
 l___private_Lean_Shell_0__Lean_versionHeader = _init_l___private_Lean_Shell_0__Lean_versionHeader();
 lean_mark_persistent(l___private_Lean_Shell_0__Lean_versionHeader);
+fprintf(stderr, "[Lean Shell Init] Initializing displayHelp constants\n");
+fflush(stderr);
 l___private_Lean_Shell_0__Lean_displayHelp___closed__0 = _init_l___private_Lean_Shell_0__Lean_displayHelp___closed__0();
 lean_mark_persistent(l___private_Lean_Shell_0__Lean_displayHelp___closed__0);
 l___private_Lean_Shell_0__Lean_displayHelp___closed__1 = _init_l___private_Lean_Shell_0__Lean_displayHelp___closed__1();
@@ -4556,6 +4565,8 @@ l___private_Lean_Shell_0__Lean_displayHelp___closed__39 = _init_l___private_Lean
 lean_mark_persistent(l___private_Lean_Shell_0__Lean_displayHelp___closed__39);
 l___private_Lean_Shell_0__Lean_displayHelp___closed__40 = _init_l___private_Lean_Shell_0__Lean_displayHelp___closed__40();
 lean_mark_persistent(l___private_Lean_Shell_0__Lean_displayHelp___closed__40);
+fprintf(stderr, "[Lean Shell Init] String constant init complete\n");
+fflush(stderr);
 l___private_Lean_Shell_0__Lean_initFn___closed__0_00___x40_Lean_Shell_3125322801____hygCtx___hyg_2_ = _init_l___private_Lean_Shell_0__Lean_initFn___closed__0_00___x40_Lean_Shell_3125322801____hygCtx___hyg_2_();
 lean_mark_persistent(l___private_Lean_Shell_0__Lean_initFn___closed__0_00___x40_Lean_Shell_3125322801____hygCtx___hyg_2_);
 l___private_Lean_Shell_0__Lean_initFn___closed__1_00___x40_Lean_Shell_3125322801____hygCtx___hyg_2_ = _init_l___private_Lean_Shell_0__Lean_initFn___closed__1_00___x40_Lean_Shell_3125322801____hygCtx___hyg_2_();
@@ -4649,6 +4660,8 @@ l___private_Lean_Shell_0__Lean_shellMain___boxed__const__1 = _init_l___private_L
 lean_mark_persistent(l___private_Lean_Shell_0__Lean_shellMain___boxed__const__1);
 l___private_Lean_Shell_0__Lean_shellMain___boxed__const__2 = _init_l___private_Lean_Shell_0__Lean_shellMain___boxed__const__2();
 lean_mark_persistent(l___private_Lean_Shell_0__Lean_shellMain___boxed__const__2);
+fprintf(stderr, "[Lean Shell Init] Got to end\n");
+fflush(stderr);
 return lean_io_result_mk_ok(lean_box(0));
 }
 #ifdef __cplusplus
