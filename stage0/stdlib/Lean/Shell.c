@@ -340,7 +340,7 @@ LEAN_EXPORT lean_object* l___private_Lean_Shell_0__Lean_Internal_getDefaultMaxMe
 _start:
 {
 lean_object* x_2; 
-x_2 = lean_internal_get_default_max_memory(x_1);
+x_2 = lean_box(0);
 return x_2;
 }
 }
@@ -1936,9 +1936,8 @@ return x_2;
 static lean_object* _init_l___private_Lean_Shell_0__Lean_initFn___closed__2_00___x40_Lean_Shell_3125322801____hygCtx___hyg_2_() {
 _start:
 {
-lean_object* x_1; lean_object* x_2; 
-x_1 = lean_box(0);
-x_2 = lean_internal_get_default_max_memory(x_1);
+lean_object* x_2;
+x_2 = lean_box(0);
 return x_2;
 }
 }
