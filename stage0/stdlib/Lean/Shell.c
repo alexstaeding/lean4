@@ -3989,7 +3989,6 @@ printf("[Lean Shell Main] 807\n");
 x_140 = !lean_is_exclusive(x_77);
 printf("[Lean Shell Main] 808\n");
 if (x_140 == 0)
-printf("[Lean Shell Main] 809\n");
 {
 printf("[Lean Shell Main] 810\n");
 return x_77;
@@ -4075,7 +4074,6 @@ printf("[Lean Shell Main] 853\n");
 x_150 = !lean_is_exclusive(x_148);
 printf("[Lean Shell Main] 854\n");
 if (x_150 == 0)
-printf("[Lean Shell Main] 855\n");
 {
 printf("[Lean Shell Main] 856\n");
 return x_148;
