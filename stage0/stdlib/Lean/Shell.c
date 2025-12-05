@@ -2224,33 +2224,53 @@ return x_5;
 LEAN_EXPORT lean_object* l_Lean_Option_get___at___00__private_Lean_Shell_0__Lean_shellMain_spec__3(lean_object* x_1, lean_object* x_2) {
 _start:
 {
+printf("[Lean Shell Spec 1]");
 lean_object* x_3; lean_object* x_4; lean_object* x_5; 
+printf("[Lean Shell Spec 2]");
 x_3 = lean_ctor_get(x_2, 0);
+printf("[Lean Shell Spec 3]");
 x_4 = lean_ctor_get(x_2, 1);
+printf("[Lean Shell Spec 4]");
 x_5 = l_Lean_KVMap_find(x_1, x_3);
+printf("[Lean Shell Spec 5]");
 if (lean_obj_tag(x_5) == 0)
 {
+printf("[Lean Shell Spec 7]");
 lean_inc(x_4);
+printf("[Lean Shell Spec 8]");
 return x_4;
 }
 else
 {
+printf("[Lean Shell Spec 12]");
 lean_object* x_6; 
+printf("[Lean Shell Spec 13]");
 x_6 = lean_ctor_get(x_5, 0);
+printf("[Lean Shell Spec 14]");
 lean_inc(x_6);
+printf("[Lean Shell Spec 15]");
 lean_dec_ref(x_5);
+printf("[Lean Shell Spec 16]");
 if (lean_obj_tag(x_6) == 3)
 {
+printf("[Lean Shell Spec 18]");
 lean_object* x_7; 
+printf("[Lean Shell Spec 19]");
 x_7 = lean_ctor_get(x_6, 0);
+printf("[Lean Shell Spec 20]");
 lean_inc(x_7);
+printf("[Lean Shell Spec 21]");
 lean_dec_ref(x_6);
+printf("[Lean Shell Spec 22]");
 return x_7;
 }
 else
 {
+printf("[Lean Shell Spec 26]");
 lean_dec(x_6);
+printf("[Lean Shell Spec 27]");
 lean_inc(x_4);
+printf("[Lean Shell Spec 28]");
 return x_4;
 }
 }
@@ -2524,7 +2544,7 @@ lean_object* x_319; lean_object* x_320; lean_object* x_321; uint8_t x_322;
 printf("[Lean Shell Main] 7\n");
 x_319 = l___private_Lean_Shell_0__Lean_shellMain___closed__20;
 printf("[Lean Shell Main] 8\n");
-x_320 = l_Lean_Option_get___at___00__private_Lean_Shell_0__Lean_shellMain_spec__3(x_10, x_319);
+x_320 = lean_box(1024*1024*1024);
 printf("[Lean Shell Main] 9\n");
 x_321 = lean_unsigned_to_nat(0u);
 printf("[Lean Shell Main] 10\n");
