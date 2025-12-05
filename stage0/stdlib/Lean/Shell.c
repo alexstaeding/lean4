@@ -1937,7 +1937,7 @@ static lean_object* _init_l___private_Lean_Shell_0__Lean_initFn___closed__2_00__
 _start:
 {
 lean_object* x_2;
-x_2 = lean_box(0);
+x_2 = lean_box(1024*1024*1024);
 return x_2;
 }
 }
