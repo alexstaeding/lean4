@@ -3810,7 +3810,6 @@ printf("[Lean Shell Main] 712\n");
 x_128 = l_IO_eprintln___at___00__private_Lean_Shell_0__Lean_shellMain_spec__1(x_127);
 printf("[Lean Shell Main] 713\n");
 if (lean_obj_tag(x_128) == 0)
-printf("[Lean Shell Main] 714\n");
 {
 printf("[Lean Shell Main] 715\n");
 lean_object* x_129; lean_object* x_130; lean_object* x_131; 
@@ -4022,9 +4021,7 @@ printf("[Lean Shell Main] 824\n");
 block_153:
 printf("[Lean Shell Main] 825\n");
 {
-printf("[Lean Shell Main] 826\n");
 if (lean_obj_tag(x_148) == 0)
-printf("[Lean Shell Main] 827\n");
 {
 printf("[Lean Shell Main] 828\n");
 lean_object* x_149; 
@@ -4112,7 +4109,6 @@ printf("[Lean Shell Main] 871\n");
 {
 printf("[Lean Shell Main] 872\n");
 if (lean_obj_tag(x_13) == 0)
-printf("[Lean Shell Main] 873\n");
 {
 printf("[Lean Shell Main] 874\n");
 lean_object* x_159; 
@@ -4120,7 +4116,6 @@ printf("[Lean Shell Main] 875\n");
 x_159 = lean_box(0);
 printf("[Lean Shell Main] 876\n");
 if (lean_obj_tag(x_156) == 1)
-printf("[Lean Shell Main] 877\n");
 {
 printf("[Lean Shell Main] 878\n");
 lean_object* x_160; lean_object* x_161; 
