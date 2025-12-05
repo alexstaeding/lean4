@@ -2515,11 +2515,9 @@ printf("[Lean Shell Main] 1\n");
 lean_object* x_23; lean_object* x_24; lean_object* x_35; lean_object* x_39; lean_object* x_40; lean_object* x_53; lean_object* x_54; lean_object* x_55; lean_object* x_56; lean_object* x_70; lean_object* x_71; lean_object* x_72; lean_object* x_73; lean_object* x_74; lean_object* x_75; lean_object* x_144; lean_object* x_145; lean_object* x_146; lean_object* x_147; lean_object* x_148; lean_object* x_154; lean_object* x_155; lean_object* x_156; lean_object* x_157; lean_object* x_158; lean_object* x_181; lean_object* x_182; lean_object* x_183; lean_object* x_184; lean_object* x_243; lean_object* x_244; lean_object* x_245; lean_object* x_246; lean_object* x_251; lean_object* x_252; lean_object* x_253; lean_object* x_272; lean_object* x_273; lean_object* x_274; lean_object* x_292; lean_object* x_298; lean_object* x_309; 
 printf("[Lean Shell Main] 2\n");
 if (x_4 == 0)
-printf("[Lean Shell Main] 3\n");
 {
 printf("[Lean Shell Main] 4\n");
 if (x_5 == 0)
-printf("[Lean Shell Main] 5\n");
 {
 printf("[Lean Shell Main] 6\n");
 lean_object* x_319; lean_object* x_320; lean_object* x_321; uint8_t x_322; 
@@ -2533,7 +2531,6 @@ printf("[Lean Shell Main] 10\n");
 x_322 = lean_nat_dec_eq(x_320, x_321);
 printf("[Lean Shell Main] 11\n");
 if (x_322 == 0)
-printf("[Lean Shell Main] 12\n");
 {
 printf("[Lean Shell Main] 13\n");
 size_t x_323; size_t x_324; size_t x_325; size_t x_326; lean_object* x_327; 
@@ -2555,7 +2552,6 @@ printf("[Lean Shell Main] 21\n");
 goto block_318;
 printf("[Lean Shell Main] 22\n");
 }
-printf("[Lean Shell Main] 23\n");
 else
 {
 printf("[Lean Shell Main] 25\n");
@@ -2568,7 +2564,6 @@ printf("[Lean Shell Main] 28\n");
 }
 printf("[Lean Shell Main] 29\n");
 }
-printf("[Lean Shell Main] 30\n");
 else
 {
 printf("[Lean Shell Main] 32\n");
@@ -2597,7 +2592,6 @@ printf("[Lean Shell Main] 43\n");
 x_328 = l_Lean_getBuildDir();
 printf("[Lean Shell Main] 44\n");
 if (lean_obj_tag(x_328) == 0)
-printf("[Lean Shell Main] 45\n");
 {
 printf("[Lean Shell Main] 46\n");
 lean_object* x_329; lean_object* x_330; 
@@ -2611,7 +2605,6 @@ printf("[Lean Shell Main] 50\n");
 x_330 = l_Lean_getLibDir(x_329);
 printf("[Lean Shell Main] 51\n");
 if (lean_obj_tag(x_330) == 0)
-printf("[Lean Shell Main] 52\n");
 {
 printf("[Lean Shell Main] 53\n");
 lean_object* x_331; lean_object* x_332; 
@@ -2625,7 +2618,6 @@ printf("[Lean Shell Main] 57\n");
 x_332 = l_IO_println___at___00__private_Lean_Shell_0__Lean_shellMain_spec__4(x_331);
 printf("[Lean Shell Main] 58\n");
 if (lean_obj_tag(x_332) == 0)
-printf("[Lean Shell Main] 59\n");
 {
 printf("[Lean Shell Main] 60\n");
 uint8_t x_333; 
@@ -2633,7 +2625,6 @@ printf("[Lean Shell Main] 61\n");
 x_333 = !lean_is_exclusive(x_332);
 printf("[Lean Shell Main] 62\n");
 if (x_333 == 0)
-printf("[Lean Shell Main] 63\n");
 {
 printf("[Lean Shell Main] 64\n");
 lean_object* x_334; lean_object* x_335; 
@@ -2649,7 +2640,6 @@ printf("[Lean Shell Main] 69\n");
 return x_332;
 printf("[Lean Shell Main] 70\n");
 }
-printf("[Lean Shell Main] 71\n");
 else
 {
 printf("[Lean Shell Main] 73\n");
@@ -2668,7 +2658,6 @@ printf("[Lean Shell Main] 79\n");
 }
 printf("[Lean Shell Main] 80\n");
 }
-printf("[Lean Shell Main] 81\n");
 else
 {
 printf("[Lean Shell Main] 83\n");
@@ -2677,13 +2666,11 @@ printf("[Lean Shell Main] 84\n");
 x_338 = !lean_is_exclusive(x_332);
 printf("[Lean Shell Main] 85\n");
 if (x_338 == 0)
-printf("[Lean Shell Main] 86\n");
 {
 printf("[Lean Shell Main] 87\n");
 return x_332;
 printf("[Lean Shell Main] 88\n");
 }
-printf("[Lean Shell Main] 89\n");
 else
 {
 printf("[Lean Shell Main] 91\n");
@@ -2706,7 +2693,6 @@ printf("[Lean Shell Main] 99\n");
 }
 printf("[Lean Shell Main] 100\n");
 }
-printf("[Lean Shell Main] 101\n");
 else
 {
 printf("[Lean Shell Main] 103\n");
@@ -2715,13 +2701,11 @@ printf("[Lean Shell Main] 104\n");
 x_341 = !lean_is_exclusive(x_330);
 printf("[Lean Shell Main] 105\n");
 if (x_341 == 0)
-printf("[Lean Shell Main] 106\n");
 {
 printf("[Lean Shell Main] 107\n");
 return x_330;
 printf("[Lean Shell Main] 108\n");
 }
-printf("[Lean Shell Main] 109\n");
 else
 {
 printf("[Lean Shell Main] 111\n");
@@ -2744,7 +2728,6 @@ printf("[Lean Shell Main] 119\n");
 }
 printf("[Lean Shell Main] 120\n");
 }
-printf("[Lean Shell Main] 121\n");
 else
 {
 printf("[Lean Shell Main] 123\n");
@@ -2753,13 +2736,11 @@ printf("[Lean Shell Main] 124\n");
 x_344 = !lean_is_exclusive(x_328);
 printf("[Lean Shell Main] 125\n");
 if (x_344 == 0)
-printf("[Lean Shell Main] 126\n");
 {
 printf("[Lean Shell Main] 127\n");
 return x_328;
 printf("[Lean Shell Main] 128\n");
 }
-printf("[Lean Shell Main] 129\n");
 else
 {
 printf("[Lean Shell Main] 131\n");
@@ -2784,7 +2765,6 @@ printf("[Lean Shell Main] 140\n");
 }
 printf("[Lean Shell Main] 141\n");
 }
-printf("[Lean Shell Main] 142\n");
 else
 {
 printf("[Lean Shell Main] 144\n");
@@ -2813,7 +2793,6 @@ printf("[Lean Shell Main] 155\n");
 x_347 = l_Lean_getBuildDir();
 printf("[Lean Shell Main] 156\n");
 if (lean_obj_tag(x_347) == 0)
-printf("[Lean Shell Main] 157\n");
 {
 printf("[Lean Shell Main] 158\n");
 lean_object* x_348; lean_object* x_349; 
@@ -2827,7 +2806,6 @@ printf("[Lean Shell Main] 162\n");
 x_349 = l_IO_println___at___00__private_Lean_Shell_0__Lean_shellMain_spec__4(x_348);
 printf("[Lean Shell Main] 163\n");
 if (lean_obj_tag(x_349) == 0)
-printf("[Lean Shell Main] 164\n");
 {
 printf("[Lean Shell Main] 165\n");
 uint8_t x_350; 
@@ -2835,7 +2813,6 @@ printf("[Lean Shell Main] 166\n");
 x_350 = !lean_is_exclusive(x_349);
 printf("[Lean Shell Main] 167\n");
 if (x_350 == 0)
-printf("[Lean Shell Main] 168\n");
 {
 printf("[Lean Shell Main] 169\n");
 lean_object* x_351; lean_object* x_352; 
@@ -2851,7 +2828,6 @@ printf("[Lean Shell Main] 174\n");
 return x_349;
 printf("[Lean Shell Main] 175\n");
 }
-printf("[Lean Shell Main] 176\n");
 else
 {
 printf("[Lean Shell Main] 178\n");
@@ -2870,7 +2846,6 @@ printf("[Lean Shell Main] 184\n");
 }
 printf("[Lean Shell Main] 185\n");
 }
-printf("[Lean Shell Main] 186\n");
 else
 {
 printf("[Lean Shell Main] 188\n");
@@ -2879,13 +2854,11 @@ printf("[Lean Shell Main] 189\n");
 x_355 = !lean_is_exclusive(x_349);
 printf("[Lean Shell Main] 190\n");
 if (x_355 == 0)
-printf("[Lean Shell Main] 191\n");
 {
 printf("[Lean Shell Main] 192\n");
 return x_349;
 printf("[Lean Shell Main] 193\n");
 }
-printf("[Lean Shell Main] 194\n");
 else
 {
 printf("[Lean Shell Main] 196\n");
@@ -2908,7 +2881,6 @@ printf("[Lean Shell Main] 204\n");
 }
 printf("[Lean Shell Main] 205\n");
 }
-printf("[Lean Shell Main] 206\n");
 else
 {
 printf("[Lean Shell Main] 208\n");
@@ -2917,13 +2889,11 @@ printf("[Lean Shell Main] 209\n");
 x_358 = !lean_is_exclusive(x_347);
 printf("[Lean Shell Main] 210\n");
 if (x_358 == 0)
-printf("[Lean Shell Main] 211\n");
 {
 printf("[Lean Shell Main] 212\n");
 return x_347;
 printf("[Lean Shell Main] 213\n");
 }
-printf("[Lean Shell Main] 214\n");
 else
 {
 printf("[Lean Shell Main] 216\n");
@@ -2956,7 +2926,6 @@ printf("[Lean Shell Main] 229\n");
 x_25 = l_Lean_printImportsJson(x_23);
 printf("[Lean Shell Main] 230\n");
 if (lean_obj_tag(x_25) == 0)
-printf("[Lean Shell Main] 231\n");
 {
 printf("[Lean Shell Main] 232\n");
 uint8_t x_26; 
@@ -2964,7 +2933,6 @@ printf("[Lean Shell Main] 233\n");
 x_26 = !lean_is_exclusive(x_25);
 printf("[Lean Shell Main] 234\n");
 if (x_26 == 0)
-printf("[Lean Shell Main] 235\n");
 {
 printf("[Lean Shell Main] 236\n");
 lean_object* x_27; lean_object* x_28; 
@@ -2980,7 +2948,6 @@ printf("[Lean Shell Main] 241\n");
 return x_25;
 printf("[Lean Shell Main] 242\n");
 }
-printf("[Lean Shell Main] 243\n");
 else
 {
 printf("[Lean Shell Main] 245\n");
@@ -2999,7 +2966,6 @@ printf("[Lean Shell Main] 251\n");
 }
 printf("[Lean Shell Main] 252\n");
 }
-printf("[Lean Shell Main] 253\n");
 else
 {
 printf("[Lean Shell Main] 255\n");
@@ -3008,13 +2974,11 @@ printf("[Lean Shell Main] 256\n");
 x_31 = !lean_is_exclusive(x_25);
 printf("[Lean Shell Main] 257\n");
 if (x_31 == 0)
-printf("[Lean Shell Main] 258\n");
 {
 printf("[Lean Shell Main] 259\n");
 return x_25;
 printf("[Lean Shell Main] 260\n");
 }
-printf("[Lean Shell Main] 261\n");
 else
 {
 printf("[Lean Shell Main] 263\n");
@@ -3065,11 +3029,9 @@ printf("[Lean Shell Main] 285\n");
 x_42 = l___private_Lean_Shell_0__Lean_shellMain___closed__0;
 printf("[Lean Shell Main] 286\n");
 if (x_42 == 0)
-printf("[Lean Shell Main] 287\n");
 {
 printf("[Lean Shell Main] 288\n");
 if (lean_obj_tag(x_39) == 0)
-printf("[Lean Shell Main] 289\n");
 {
 printf("[Lean Shell Main] 290\n");
 uint8_t x_43; lean_object* x_44; 
@@ -3081,7 +3043,6 @@ printf("[Lean Shell Main] 293\n");
 return x_44;
 printf("[Lean Shell Main] 294\n");
 }
-printf("[Lean Shell Main] 295\n");
 else
 {
 printf("[Lean Shell Main] 297\n");
@@ -3098,12 +3059,10 @@ printf("[Lean Shell Main] 302\n");
 }
 printf("[Lean Shell Main] 303\n");
 }
-printf("[Lean Shell Main] 304\n");
 else
 {
 printf("[Lean Shell Main] 306\n");
 if (lean_obj_tag(x_39) == 0)
-printf("[Lean Shell Main] 307\n");
 {
 printf("[Lean Shell Main] 308\n");
 x_35 = lean_box(0);
@@ -3111,7 +3070,6 @@ printf("[Lean Shell Main] 309\n");
 goto block_38;
 printf("[Lean Shell Main] 310\n");
 }
-printf("[Lean Shell Main] 311\n");
 else
 {
 printf("[Lean Shell Main] 313\n");
@@ -3120,7 +3078,6 @@ printf("[Lean Shell Main] 314\n");
 x_47 = !lean_is_exclusive(x_39);
 printf("[Lean Shell Main] 315\n");
 if (x_47 == 0)
-printf("[Lean Shell Main] 316\n");
 {
 printf("[Lean Shell Main] 317\n");
 lean_object* x_48; 
@@ -3130,7 +3087,6 @@ printf("[Lean Shell Main] 319\n");
 lean_dec(x_48);
 printf("[Lean Shell Main] 320\n");
 if (x_42 == 0)
-printf("[Lean Shell Main] 321\n");
 {
 printf("[Lean Shell Main] 322\n");
 lean_free_object(x_39);
@@ -3140,7 +3096,6 @@ printf("[Lean Shell Main] 324\n");
 goto block_38;
 printf("[Lean Shell Main] 325\n");
 }
-printf("[Lean Shell Main] 326\n");
 else
 {
 printf("[Lean Shell Main] 328\n");
@@ -3157,14 +3112,12 @@ printf("[Lean Shell Main] 333\n");
 }
 printf("[Lean Shell Main] 334\n");
 }
-printf("[Lean Shell Main] 335\n");
 else
 {
 printf("[Lean Shell Main] 337\n");
 lean_dec(x_39);
 printf("[Lean Shell Main] 338\n");
 if (x_42 == 0)
-printf("[Lean Shell Main] 339\n");
 {
 printf("[Lean Shell Main] 340\n");
 x_35 = lean_box(0);
@@ -3172,7 +3125,6 @@ printf("[Lean Shell Main] 341\n");
 goto block_38;
 printf("[Lean Shell Main] 342\n");
 }
-printf("[Lean Shell Main] 343\n");
 else
 {
 printf("[Lean Shell Main] 345\n");
@@ -3201,7 +3153,6 @@ printf("[Lean Shell Main] 356\n");
 {
 printf("[Lean Shell Main] 357\n");
 if (lean_obj_tag(x_17) == 1)
-printf("[Lean Shell Main] 358\n");
 {
 printf("[Lean Shell Main] 359\n");
 lean_object* x_57; lean_object* x_58; 
@@ -3215,7 +3166,6 @@ printf("[Lean Shell Main] 363\n");
 x_58 = lean_init_llvm();
 printf("[Lean Shell Main] 364\n");
 if (lean_obj_tag(x_58) == 0)
-printf("[Lean Shell Main] 365\n");
 {
 printf("[Lean Shell Main] 366\n");
 lean_object* x_59; lean_object* x_60; lean_object* x_61; lean_object* x_62; 
@@ -3239,7 +3189,6 @@ printf("[Lean Shell Main] 375\n");
 lean_dec(x_10);
 printf("[Lean Shell Main] 376\n");
 if (lean_obj_tag(x_62) == 0)
-printf("[Lean Shell Main] 377\n");
 {
 printf("[Lean Shell Main] 378\n");
 lean_dec_ref(x_62);
@@ -3251,7 +3200,6 @@ printf("[Lean Shell Main] 381\n");
 goto block_52;
 printf("[Lean Shell Main] 382\n");
 }
-printf("[Lean Shell Main] 383\n");
 else
 {
 printf("[Lean Shell Main] 385\n");
@@ -3262,13 +3210,11 @@ printf("[Lean Shell Main] 387\n");
 x_63 = !lean_is_exclusive(x_62);
 printf("[Lean Shell Main] 388\n");
 if (x_63 == 0)
-printf("[Lean Shell Main] 389\n");
 {
 printf("[Lean Shell Main] 390\n");
 return x_62;
 printf("[Lean Shell Main] 391\n");
 }
-printf("[Lean Shell Main] 392\n");
 else
 {
 printf("[Lean Shell Main] 394\n");
@@ -3291,7 +3237,6 @@ printf("[Lean Shell Main] 402\n");
 }
 printf("[Lean Shell Main] 403\n");
 }
-printf("[Lean Shell Main] 404\n");
 else
 {
 printf("[Lean Shell Main] 406\n");
@@ -3310,13 +3255,11 @@ printf("[Lean Shell Main] 412\n");
 x_66 = !lean_is_exclusive(x_58);
 printf("[Lean Shell Main] 413\n");
 if (x_66 == 0)
-printf("[Lean Shell Main] 414\n");
 {
 printf("[Lean Shell Main] 415\n");
 return x_58;
 printf("[Lean Shell Main] 416\n");
 }
-printf("[Lean Shell Main] 417\n");
 else
 {
 printf("[Lean Shell Main] 419\n");
@@ -3339,7 +3282,6 @@ printf("[Lean Shell Main] 427\n");
 }
 printf("[Lean Shell Main] 428\n");
 }
-printf("[Lean Shell Main] 429\n");
 else
 {
 printf("[Lean Shell Main] 431\n");
@@ -3380,7 +3322,6 @@ printf("[Lean Shell Main] 448\n");
 lean_dec(x_15);
 printf("[Lean Shell Main] 449\n");
 if (lean_obj_tag(x_77) == 0)
-printf("[Lean Shell Main] 450\n");
 {
 printf("[Lean Shell Main] 451\n");
 uint8_t x_78; 
@@ -3388,7 +3329,6 @@ printf("[Lean Shell Main] 452\n");
 x_78 = !lean_is_exclusive(x_77);
 printf("[Lean Shell Main] 453\n");
 if (x_78 == 0)
-printf("[Lean Shell Main] 454\n");
 {
 printf("[Lean Shell Main] 455\n");
 lean_object* x_79; 
@@ -3396,11 +3336,9 @@ printf("[Lean Shell Main] 456\n");
 x_79 = lean_ctor_get(x_77, 0);
 printf("[Lean Shell Main] 457\n");
 if (lean_obj_tag(x_79) == 1)
-printf("[Lean Shell Main] 458\n");
 {
 printf("[Lean Shell Main] 459\n");
 if (x_21 == 0)
-printf("[Lean Shell Main] 460\n");
 {
 printf("[Lean Shell Main] 461\n");
 lean_free_object(x_77);
@@ -3408,7 +3346,6 @@ printf("[Lean Shell Main] 462\n");
 lean_dec(x_71);
 printf("[Lean Shell Main] 463\n");
 if (lean_obj_tag(x_16) == 1)
-printf("[Lean Shell Main] 464\n");
 {
 printf("[Lean Shell Main] 465\n");
 lean_object* x_80; lean_object* x_81; uint8_t x_82; lean_object* x_83; 
@@ -3428,7 +3365,6 @@ printf("[Lean Shell Main] 472\n");
 x_83 = lean_io_prim_handle_mk(x_81, x_82);
 printf("[Lean Shell Main] 473\n");
 if (lean_obj_tag(x_83) == 0)
-printf("[Lean Shell Main] 474\n");
 {
 printf("[Lean Shell Main] 475\n");
 lean_object* x_84; lean_object* x_85; lean_object* x_86; lean_object* x_87; lean_object* x_88; lean_object* x_89; 
@@ -3460,7 +3396,6 @@ printf("[Lean Shell Main] 488\n");
 x_89 = l_Lean_profileitIOUnsafe___redArg(x_85, x_10, x_87, x_88);
 printf("[Lean Shell Main] 489\n");
 if (lean_obj_tag(x_89) == 0)
-printf("[Lean Shell Main] 490\n");
 {
 printf("[Lean Shell Main] 491\n");
 lean_dec_ref(x_89);
@@ -3476,7 +3411,6 @@ printf("[Lean Shell Main] 496\n");
 goto block_69;
 printf("[Lean Shell Main] 497\n");
 }
-printf("[Lean Shell Main] 498\n");
 else
 {
 printf("[Lean Shell Main] 500\n");
@@ -3495,13 +3429,11 @@ printf("[Lean Shell Main] 506\n");
 x_90 = !lean_is_exclusive(x_89);
 printf("[Lean Shell Main] 507\n");
 if (x_90 == 0)
-printf("[Lean Shell Main] 508\n");
 {
 printf("[Lean Shell Main] 509\n");
 return x_89;
 printf("[Lean Shell Main] 510\n");
 }
-printf("[Lean Shell Main] 511\n");
 else
 {
 printf("[Lean Shell Main] 513\n");
@@ -3524,7 +3456,6 @@ printf("[Lean Shell Main] 521\n");
 }
 printf("[Lean Shell Main] 522\n");
 }
-printf("[Lean Shell Main] 523\n");
 else
 {
 printf("[Lean Shell Main] 525\n");
@@ -3555,7 +3486,6 @@ printf("[Lean Shell Main] 537\n");
 x_97 = l_IO_eprintln___at___00__private_Lean_Shell_0__Lean_shellMain_spec__1(x_96);
 printf("[Lean Shell Main] 538\n");
 if (lean_obj_tag(x_97) == 0)
-printf("[Lean Shell Main] 539\n");
 {
 printf("[Lean Shell Main] 540\n");
 uint8_t x_98; 
@@ -3563,7 +3493,6 @@ printf("[Lean Shell Main] 541\n");
 x_98 = !lean_is_exclusive(x_97);
 printf("[Lean Shell Main] 542\n");
 if (x_98 == 0)
-printf("[Lean Shell Main] 543\n");
 {
 printf("[Lean Shell Main] 544\n");
 lean_object* x_99; lean_object* x_100; 
@@ -3579,7 +3508,6 @@ printf("[Lean Shell Main] 549\n");
 return x_97;
 printf("[Lean Shell Main] 550\n");
 }
-printf("[Lean Shell Main] 551\n");
 else
 {
 printf("[Lean Shell Main] 553\n");
@@ -3598,7 +3526,6 @@ printf("[Lean Shell Main] 559\n");
 }
 printf("[Lean Shell Main] 560\n");
 }
-printf("[Lean Shell Main] 561\n");
 else
 {
 printf("[Lean Shell Main] 563\n");
@@ -3607,13 +3534,11 @@ printf("[Lean Shell Main] 564\n");
 x_103 = !lean_is_exclusive(x_97);
 printf("[Lean Shell Main] 565\n");
 if (x_103 == 0)
-printf("[Lean Shell Main] 566\n");
 {
 printf("[Lean Shell Main] 567\n");
 return x_97;
 printf("[Lean Shell Main] 568\n");
 }
-printf("[Lean Shell Main] 569\n");
 else
 {
 printf("[Lean Shell Main] 571\n");
@@ -3638,7 +3563,6 @@ printf("[Lean Shell Main] 580\n");
 }
 printf("[Lean Shell Main] 581\n");
 }
-printf("[Lean Shell Main] 582\n");
 else
 {
 printf("[Lean Shell Main] 584\n");
@@ -3663,7 +3587,6 @@ printf("[Lean Shell Main] 593\n");
 }
 printf("[Lean Shell Main] 594\n");
 }
-printf("[Lean Shell Main] 595\n");
 else
 {
 printf("[Lean Shell Main] 597\n");
@@ -3698,7 +3621,6 @@ printf("[Lean Shell Main] 611\n");
 }
 printf("[Lean Shell Main] 612\n");
 }
-printf("[Lean Shell Main] 613\n");
 else
 {
 printf("[Lean Shell Main] 615\n");
@@ -3723,7 +3645,6 @@ printf("[Lean Shell Main] 624\n");
 }
 printf("[Lean Shell Main] 625\n");
 }
-printf("[Lean Shell Main] 626\n");
 else
 {
 printf("[Lean Shell Main] 628\n");
@@ -3736,17 +3657,14 @@ printf("[Lean Shell Main] 631\n");
 lean_dec(x_77);
 printf("[Lean Shell Main] 632\n");
 if (lean_obj_tag(x_110) == 1)
-printf("[Lean Shell Main] 633\n");
 {
 printf("[Lean Shell Main] 634\n");
 if (x_21 == 0)
-printf("[Lean Shell Main] 635\n");
 {
 printf("[Lean Shell Main] 636\n");
 lean_dec(x_71);
 printf("[Lean Shell Main] 637\n");
 if (lean_obj_tag(x_16) == 1)
-printf("[Lean Shell Main] 638\n");
 {
 printf("[Lean Shell Main] 639\n");
 lean_object* x_111; lean_object* x_112; uint8_t x_113; lean_object* x_114; 
@@ -3766,7 +3684,6 @@ printf("[Lean Shell Main] 646\n");
 x_114 = lean_io_prim_handle_mk(x_112, x_113);
 printf("[Lean Shell Main] 647\n");
 if (lean_obj_tag(x_114) == 0)
-printf("[Lean Shell Main] 648\n");
 {
 printf("[Lean Shell Main] 649\n");
 lean_object* x_115; lean_object* x_116; lean_object* x_117; lean_object* x_118; lean_object* x_119; lean_object* x_120; 
@@ -3798,7 +3715,6 @@ printf("[Lean Shell Main] 662\n");
 x_120 = l_Lean_profileitIOUnsafe___redArg(x_116, x_10, x_118, x_119);
 printf("[Lean Shell Main] 663\n");
 if (lean_obj_tag(x_120) == 0)
-printf("[Lean Shell Main] 664\n");
 {
 printf("[Lean Shell Main] 665\n");
 lean_dec_ref(x_120);
@@ -3814,7 +3730,6 @@ printf("[Lean Shell Main] 670\n");
 goto block_69;
 printf("[Lean Shell Main] 671\n");
 }
-printf("[Lean Shell Main] 672\n");
 else
 {
 printf("[Lean Shell Main] 674\n");
@@ -3865,7 +3780,6 @@ printf("[Lean Shell Main] 696\n");
 }
 printf("[Lean Shell Main] 697\n");
 }
-printf("[Lean Shell Main] 698\n");
 else
 {
 printf("[Lean Shell Main] 700\n");
@@ -3932,7 +3846,6 @@ printf("[Lean Shell Main] 730\n");
 return x_131;
 printf("[Lean Shell Main] 731\n");
 }
-printf("[Lean Shell Main] 732\n");
 else
 {
 printf("[Lean Shell Main] 734\n");
@@ -3975,7 +3888,6 @@ printf("[Lean Shell Main] 752\n");
 }
 printf("[Lean Shell Main] 753\n");
 }
-printf("[Lean Shell Main] 754\n");
 else
 {
 printf("[Lean Shell Main] 756\n");
@@ -4000,7 +3912,6 @@ printf("[Lean Shell Main] 765\n");
 }
 printf("[Lean Shell Main] 766\n");
 }
-printf("[Lean Shell Main] 767\n");
 else
 {
 printf("[Lean Shell Main] 769\n");
@@ -4037,7 +3948,6 @@ printf("[Lean Shell Main] 784\n");
 }
 printf("[Lean Shell Main] 785\n");
 }
-printf("[Lean Shell Main] 786\n");
 else
 {
 printf("[Lean Shell Main] 788\n");
@@ -4062,7 +3972,6 @@ printf("[Lean Shell Main] 797\n");
 }
 printf("[Lean Shell Main] 798\n");
 }
-printf("[Lean Shell Main] 799\n");
 else
 {
 printf("[Lean Shell Main] 801\n");
@@ -4087,7 +3996,6 @@ printf("[Lean Shell Main] 810\n");
 return x_77;
 printf("[Lean Shell Main] 811\n");
 }
-printf("[Lean Shell Main] 812\n");
 else
 {
 printf("[Lean Shell Main] 814\n");
@@ -4142,7 +4050,6 @@ printf("[Lean Shell Main] 838\n");
 goto block_143;
 printf("[Lean Shell Main] 839\n");
 }
-printf("[Lean Shell Main] 840\n");
 else
 {
 printf("[Lean Shell Main] 842\n");
@@ -4177,7 +4084,6 @@ printf("[Lean Shell Main] 856\n");
 return x_148;
 printf("[Lean Shell Main] 857\n");
 }
-printf("[Lean Shell Main] 858\n");
 else
 {
 printf("[Lean Shell Main] 860\n");
@@ -4228,7 +4134,6 @@ printf("[Lean Shell Main] 882\n");
 x_161 = l_Lean_moduleNameOfFileName(x_160, x_12);
 printf("[Lean Shell Main] 883\n");
 if (lean_obj_tag(x_161) == 0)
-printf("[Lean Shell Main] 884\n");
 {
 printf("[Lean Shell Main] 885\n");
 x_144 = x_159;
@@ -4244,17 +4149,14 @@ printf("[Lean Shell Main] 890\n");
 goto block_153;
 printf("[Lean Shell Main] 891\n");
 }
-printf("[Lean Shell Main] 892\n");
 else
 printf("[Lean Shell Main] 893\n");
 {
 printf("[Lean Shell Main] 894\n");
 if (lean_obj_tag(x_14) == 0)
-printf("[Lean Shell Main] 895\n");
 {
 printf("[Lean Shell Main] 896\n");
 if (lean_obj_tag(x_16) == 0)
-printf("[Lean Shell Main] 897\n");
 {
 printf("[Lean Shell Main] 898\n");
 lean_object* x_162; 
@@ -4278,7 +4180,6 @@ printf("[Lean Shell Main] 907\n");
 goto block_143;
 printf("[Lean Shell Main] 908\n");
 }
-printf("[Lean Shell Main] 909\n");
 else
 {
 printf("[Lean Shell Main] 911\n");
@@ -4297,7 +4198,6 @@ printf("[Lean Shell Main] 917\n");
 }
 printf("[Lean Shell Main] 918\n");
 }
-printf("[Lean Shell Main] 919\n");
 else
 {
 printf("[Lean Shell Main] 921\n");
@@ -4318,7 +4218,6 @@ printf("[Lean Shell Main] 928\n");
 }
 printf("[Lean Shell Main] 929\n");
 }
-printf("[Lean Shell Main] 930\n");
 else
 {
 printf("[Lean Shell Main] 932\n");
@@ -4347,7 +4246,6 @@ printf("[Lean Shell Main] 943\n");
 }
 printf("[Lean Shell Main] 944\n");
 }
-printf("[Lean Shell Main] 945\n");
 else
 {
 printf("[Lean Shell Main] 947\n");
@@ -4360,7 +4258,6 @@ printf("[Lean Shell Main] 950\n");
 x_164 = !lean_is_exclusive(x_13);
 printf("[Lean Shell Main] 951\n");
 if (x_164 == 0)
-printf("[Lean Shell Main] 952\n");
 {
 printf("[Lean Shell Main] 953\n");
 lean_object* x_165; lean_object* x_166; 
@@ -4372,7 +4269,6 @@ printf("[Lean Shell Main] 956\n");
 lean_dec(x_165);
 printf("[Lean Shell Main] 957\n");
 if (lean_obj_tag(x_166) == 0)
-printf("[Lean Shell Main] 958\n");
 {
 printf("[Lean Shell Main] 959\n");
 lean_object* x_167; lean_object* x_168; 
@@ -4404,7 +4300,6 @@ printf("[Lean Shell Main] 972\n");
 goto block_143;
 printf("[Lean Shell Main] 973\n");
 }
-printf("[Lean Shell Main] 974\n");
 else
 {
 printf("[Lean Shell Main] 976\n");
@@ -4433,13 +4328,10 @@ printf("[Lean Shell Main] 987\n");
 x_169 = !lean_is_exclusive(x_166);
 printf("[Lean Shell Main] 988\n");
 if (x_169 == 0)
-printf("[Lean Shell Main] 989\n");
 {
 printf("[Lean Shell Main] 990\n");
 return x_166;
-printf("[Lean Shell Main] 991\n");
 }
-printf("[Lean Shell Main] 992\n");
 else
 {
 printf("[Lean Shell Main] 994\n");
@@ -4462,7 +4354,6 @@ printf("[Lean Shell Main] 1002\n");
 }
 printf("[Lean Shell Main] 1003\n");
 }
-printf("[Lean Shell Main] 1004\n");
 else
 {
 printf("[Lean Shell Main] 1006\n");
@@ -4479,7 +4370,6 @@ printf("[Lean Shell Main] 1011\n");
 lean_dec(x_172);
 printf("[Lean Shell Main] 1012\n");
 if (lean_obj_tag(x_173) == 0)
-printf("[Lean Shell Main] 1013\n");
 {
 printf("[Lean Shell Main] 1014\n");
 lean_object* x_174; lean_object* x_175; lean_object* x_176; 
@@ -4513,7 +4403,6 @@ printf("[Lean Shell Main] 1028\n");
 goto block_143;
 printf("[Lean Shell Main] 1029\n");
 }
-printf("[Lean Shell Main] 1030\n");
 else
 {
 printf("[Lean Shell Main] 1032\n");
@@ -4582,7 +4471,6 @@ printf("[Lean Shell Main] 1063\n");
 {
 printf("[Lean Shell Main] 1064\n");
 if (lean_obj_tag(x_184) == 0)
-printf("[Lean Shell Main] 1065\n");
 {
 printf("[Lean Shell Main] 1066\n");
 lean_object* x_185; lean_object* x_186; 
@@ -4598,11 +4486,8 @@ printf("[Lean Shell Main] 1071\n");
 lean_dec(x_185);
 printf("[Lean Shell Main] 1072\n");
 if (x_7 == 0)
-printf("[Lean Shell Main] 1073\n");
 {
-printf("[Lean Shell Main] 1074\n");
 if (x_8 == 0)
-printf("[Lean Shell Main] 1075\n");
 {
 printf("[Lean Shell Main] 1076\n");
 lean_object* x_187; lean_object* x_188; lean_object* x_189; lean_object* x_190; lean_object* x_191; lean_object* x_192; uint8_t x_193; 
@@ -4634,7 +4519,6 @@ printf("[Lean Shell Main] 1089\n");
 lean_dec(x_192);
 printf("[Lean Shell Main] 1090\n");
 if (x_193 == 0)
-printf("[Lean Shell Main] 1091\n");
 {
 printf("[Lean Shell Main] 1092\n");
 lean_dec_ref(x_189);
@@ -4654,7 +4538,6 @@ printf("[Lean Shell Main] 1099\n");
 goto block_180;
 printf("[Lean Shell Main] 1100\n");
 }
-printf("[Lean Shell Main] 1101\n");
 else
 {
 printf("[Lean Shell Main] 1103\n");
@@ -4665,7 +4548,6 @@ printf("[Lean Shell Main] 1105\n");
 lean_dec_ref(x_189);
 printf("[Lean Shell Main] 1106\n");
 if (x_194 == 0)
-printf("[Lean Shell Main] 1107\n");
 {
 printf("[Lean Shell Main] 1108\n");
 lean_dec(x_188);
@@ -4683,7 +4565,6 @@ printf("[Lean Shell Main] 1114\n");
 goto block_180;
 printf("[Lean Shell Main] 1115\n");
 }
-printf("[Lean Shell Main] 1116\n");
 else
 {
 printf("[Lean Shell Main] 1118\n");
@@ -4716,7 +4597,6 @@ printf("[Lean Shell Main] 1131\n");
 x_203 = l_String_Slice_beq(x_201, x_202);
 printf("[Lean Shell Main] 1132\n");
 if (x_203 == 0)
-printf("[Lean Shell Main] 1133\n");
 {
 printf("[Lean Shell Main] 1134\n");
 lean_object* x_204; lean_object* x_205; lean_object* x_206; lean_object* x_207; lean_object* x_208; lean_object* x_209; 
@@ -4766,7 +4646,6 @@ printf("[Lean Shell Main] 1156\n");
 x_209 = l_IO_eprintln___at___00__private_Lean_Shell_0__Lean_shellMain_spec__1(x_208);
 printf("[Lean Shell Main] 1157\n");
 if (lean_obj_tag(x_209) == 0)
-printf("[Lean Shell Main] 1158\n");
 {
 printf("[Lean Shell Main] 1159\n");
 uint8_t x_210; 
@@ -4774,7 +4653,6 @@ printf("[Lean Shell Main] 1160\n");
 x_210 = !lean_is_exclusive(x_209);
 printf("[Lean Shell Main] 1161\n");
 if (x_210 == 0)
-printf("[Lean Shell Main] 1162\n");
 {
 printf("[Lean Shell Main] 1163\n");
 lean_object* x_211; lean_object* x_212; 
@@ -4790,7 +4668,6 @@ printf("[Lean Shell Main] 1168\n");
 return x_209;
 printf("[Lean Shell Main] 1169\n");
 }
-printf("[Lean Shell Main] 1170\n");
 else
 {
 printf("[Lean Shell Main] 1172\n");
@@ -4809,7 +4686,6 @@ printf("[Lean Shell Main] 1178\n");
 }
 printf("[Lean Shell Main] 1179\n");
 }
-printf("[Lean Shell Main] 1180\n");
 else
 {
 printf("[Lean Shell Main] 1182\n");
@@ -4818,13 +4694,11 @@ printf("[Lean Shell Main] 1183\n");
 x_215 = !lean_is_exclusive(x_209);
 printf("[Lean Shell Main] 1184\n");
 if (x_215 == 0)
-printf("[Lean Shell Main] 1185\n");
 {
 printf("[Lean Shell Main] 1186\n");
 return x_209;
 printf("[Lean Shell Main] 1187\n");
 }
-printf("[Lean Shell Main] 1188\n");
 else
 {
 printf("[Lean Shell Main] 1190\n");
@@ -4847,7 +4721,6 @@ printf("[Lean Shell Main] 1198\n");
 }
 printf("[Lean Shell Main] 1199\n");
 }
-printf("[Lean Shell Main] 1200\n");
 else
 {
 printf("[Lean Shell Main] 1202\n");
@@ -4882,7 +4755,6 @@ printf("[Lean Shell Main] 1216\n");
 }
 printf("[Lean Shell Main] 1217\n");
 }
-printf("[Lean Shell Main] 1218\n");
 else
 {
 printf("[Lean Shell Main] 1220\n");
@@ -4915,7 +4787,6 @@ printf("[Lean Shell Main] 1233\n");
 x_220 = l_Lean_Elab_printImportSrcs(x_186, x_219);
 printf("[Lean Shell Main] 1234\n");
 if (lean_obj_tag(x_220) == 0)
-printf("[Lean Shell Main] 1235\n");
 {
 printf("[Lean Shell Main] 1236\n");
 uint8_t x_221; 
@@ -4923,7 +4794,6 @@ printf("[Lean Shell Main] 1237\n");
 x_221 = !lean_is_exclusive(x_220);
 printf("[Lean Shell Main] 1238\n");
 if (x_221 == 0)
-printf("[Lean Shell Main] 1239\n");
 {
 printf("[Lean Shell Main] 1240\n");
 lean_object* x_222; lean_object* x_223; 
@@ -4939,7 +4809,6 @@ printf("[Lean Shell Main] 1245\n");
 return x_220;
 printf("[Lean Shell Main] 1246\n");
 }
-printf("[Lean Shell Main] 1247\n");
 else
 {
 printf("[Lean Shell Main] 1249\n");
@@ -4958,7 +4827,6 @@ printf("[Lean Shell Main] 1255\n");
 }
 printf("[Lean Shell Main] 1256\n");
 }
-printf("[Lean Shell Main] 1257\n");
 else
 {
 printf("[Lean Shell Main] 1259\n");
@@ -4967,13 +4835,11 @@ printf("[Lean Shell Main] 1260\n");
 x_226 = !lean_is_exclusive(x_220);
 printf("[Lean Shell Main] 1261\n");
 if (x_226 == 0)
-printf("[Lean Shell Main] 1262\n");
 {
 printf("[Lean Shell Main] 1263\n");
 return x_220;
 printf("[Lean Shell Main] 1264\n");
 }
-printf("[Lean Shell Main] 1265\n");
 else
 {
 printf("[Lean Shell Main] 1267\n");
@@ -4998,7 +4864,6 @@ printf("[Lean Shell Main] 1276\n");
 }
 printf("[Lean Shell Main] 1277\n");
 }
-printf("[Lean Shell Main] 1278\n");
 else
 {
 printf("[Lean Shell Main] 1280\n");
@@ -5031,7 +4896,6 @@ printf("[Lean Shell Main] 1293\n");
 x_230 = l_Lean_Elab_printImports(x_186, x_229);
 printf("[Lean Shell Main] 1294\n");
 if (lean_obj_tag(x_230) == 0)
-printf("[Lean Shell Main] 1295\n");
 {
 printf("[Lean Shell Main] 1296\n");
 uint8_t x_231; 
@@ -5039,7 +4903,6 @@ printf("[Lean Shell Main] 1297\n");
 x_231 = !lean_is_exclusive(x_230);
 printf("[Lean Shell Main] 1298\n");
 if (x_231 == 0)
-printf("[Lean Shell Main] 1299\n");
 {
 printf("[Lean Shell Main] 1300\n");
 lean_object* x_232; lean_object* x_233; 
@@ -5055,7 +4918,6 @@ printf("[Lean Shell Main] 1305\n");
 return x_230;
 printf("[Lean Shell Main] 1306\n");
 }
-printf("[Lean Shell Main] 1307\n");
 else
 {
 printf("[Lean Shell Main] 1309\n");
@@ -5074,7 +4936,6 @@ printf("[Lean Shell Main] 1315\n");
 }
 printf("[Lean Shell Main] 1316\n");
 }
-printf("[Lean Shell Main] 1317\n");
 else
 {
 printf("[Lean Shell Main] 1319\n");
@@ -5083,13 +4944,11 @@ printf("[Lean Shell Main] 1320\n");
 x_236 = !lean_is_exclusive(x_230);
 printf("[Lean Shell Main] 1321\n");
 if (x_236 == 0)
-printf("[Lean Shell Main] 1322\n");
 {
 printf("[Lean Shell Main] 1323\n");
 return x_230;
 printf("[Lean Shell Main] 1324\n");
 }
-printf("[Lean Shell Main] 1325\n");
 else
 {
 printf("[Lean Shell Main] 1327\n");
@@ -5114,7 +4973,6 @@ printf("[Lean Shell Main] 1336\n");
 }
 printf("[Lean Shell Main] 1337\n");
 }
-printf("[Lean Shell Main] 1338\n");
 else
 {
 printf("[Lean Shell Main] 1340\n");
@@ -5145,13 +5003,11 @@ printf("[Lean Shell Main] 1352\n");
 x_239 = !lean_is_exclusive(x_184);
 printf("[Lean Shell Main] 1353\n");
 if (x_239 == 0)
-printf("[Lean Shell Main] 1354\n");
 {
 printf("[Lean Shell Main] 1355\n");
 return x_184;
 printf("[Lean Shell Main] 1356\n");
 }
-printf("[Lean Shell Main] 1357\n");
 else
 {
 printf("[Lean Shell Main] 1359\n");
@@ -5180,7 +5036,6 @@ printf("[Lean Shell Main] 1370\n");
 {
 printf("[Lean Shell Main] 1371\n");
 if (x_6 == 0)
-printf("[Lean Shell Main] 1372\n");
 {
 printf("[Lean Shell Main] 1373\n");
 lean_object* x_247; 
@@ -5198,7 +5053,6 @@ printf("[Lean Shell Main] 1379\n");
 goto block_242;
 printf("[Lean Shell Main] 1380\n");
 }
-printf("[Lean Shell Main] 1381\n");
 else
 {
 printf("[Lean Shell Main] 1383\n");
@@ -5227,7 +5081,6 @@ printf("[Lean Shell Main] 1394\n");
 {
 printf("[Lean Shell Main] 1395\n");
 if (lean_obj_tag(x_253) == 1)
-printf("[Lean Shell Main] 1396\n");
 {
 printf("[Lean Shell Main] 1397\n");
 lean_object* x_254; 
@@ -5247,12 +5100,10 @@ printf("[Lean Shell Main] 1404\n");
 goto block_250;
 printf("[Lean Shell Main] 1405\n");
 }
-printf("[Lean Shell Main] 1406\n");
 else
 {
 printf("[Lean Shell Main] 1408\n");
 if (x_6 == 0)
-printf("[Lean Shell Main] 1409\n");
 {
 printf("[Lean Shell Main] 1410\n");
 lean_object* x_255; lean_object* x_256; 
@@ -5282,7 +5133,6 @@ printf("[Lean Shell Main] 1422\n");
 x_256 = l_IO_eprintln___at___00__private_Lean_Shell_0__Lean_shellMain_spec__1(x_255);
 printf("[Lean Shell Main] 1423\n");
 if (lean_obj_tag(x_256) == 0)
-printf("[Lean Shell Main] 1424\n");
 {
 printf("[Lean Shell Main] 1425\n");
 uint8_t x_257; lean_object* x_258; 
@@ -5294,7 +5144,6 @@ printf("[Lean Shell Main] 1428\n");
 x_258 = lean_display_help(x_257);
 printf("[Lean Shell Main] 1429\n");
 if (lean_obj_tag(x_258) == 0)
-printf("[Lean Shell Main] 1430\n");
 {
 printf("[Lean Shell Main] 1431\n");
 uint8_t x_259; 
@@ -5302,7 +5151,6 @@ printf("[Lean Shell Main] 1432\n");
 x_259 = !lean_is_exclusive(x_258);
 printf("[Lean Shell Main] 1433\n");
 if (x_259 == 0)
-printf("[Lean Shell Main] 1434\n");
 {
 printf("[Lean Shell Main] 1435\n");
 lean_object* x_260; lean_object* x_261; 
@@ -5318,7 +5166,6 @@ printf("[Lean Shell Main] 1440\n");
 return x_258;
 printf("[Lean Shell Main] 1441\n");
 }
-printf("[Lean Shell Main] 1442\n");
 else
 {
 printf("[Lean Shell Main] 1444\n");
@@ -5337,7 +5184,6 @@ printf("[Lean Shell Main] 1450\n");
 }
 printf("[Lean Shell Main] 1451\n");
 }
-printf("[Lean Shell Main] 1452\n");
 else
 {
 printf("[Lean Shell Main] 1454\n");
@@ -5346,13 +5192,11 @@ printf("[Lean Shell Main] 1455\n");
 x_264 = !lean_is_exclusive(x_258);
 printf("[Lean Shell Main] 1456\n");
 if (x_264 == 0)
-printf("[Lean Shell Main] 1457\n");
 {
 printf("[Lean Shell Main] 1458\n");
 return x_258;
 printf("[Lean Shell Main] 1459\n");
 }
-printf("[Lean Shell Main] 1460\n");
 else
 {
 printf("[Lean Shell Main] 1462\n");
@@ -5375,7 +5219,6 @@ printf("[Lean Shell Main] 1470\n");
 }
 printf("[Lean Shell Main] 1471\n");
 }
-printf("[Lean Shell Main] 1472\n");
 else
 {
 printf("[Lean Shell Main] 1474\n");
@@ -5384,13 +5227,11 @@ printf("[Lean Shell Main] 1475\n");
 x_267 = !lean_is_exclusive(x_256);
 printf("[Lean Shell Main] 1476\n");
 if (x_267 == 0)
-printf("[Lean Shell Main] 1477\n");
 {
 printf("[Lean Shell Main] 1478\n");
 return x_256;
 printf("[Lean Shell Main] 1479\n");
 }
-printf("[Lean Shell Main] 1480\n");
 else
 {
 printf("[Lean Shell Main] 1482\n");
@@ -5413,7 +5254,6 @@ printf("[Lean Shell Main] 1490\n");
 }
 printf("[Lean Shell Main] 1491\n");
 }
-printf("[Lean Shell Main] 1492\n");
 else
 {
 printf("[Lean Shell Main] 1494\n");
@@ -5442,7 +5282,6 @@ printf("[Lean Shell Main] 1505\n");
 {
 printf("[Lean Shell Main] 1506\n");
 if (x_21 == 0)
-printf("[Lean Shell Main] 1507\n");
 {
 printf("[Lean Shell Main] 1508\n");
 uint8_t x_275; 
@@ -5450,7 +5289,6 @@ printf("[Lean Shell Main] 1509\n");
 x_275 = l_List_isEmpty___redArg(x_274);
 printf("[Lean Shell Main] 1510\n");
 if (x_275 == 0)
-printf("[Lean Shell Main] 1511\n");
 {
 printf("[Lean Shell Main] 1512\n");
 lean_object* x_276; lean_object* x_277; 
@@ -5480,7 +5318,6 @@ printf("[Lean Shell Main] 1524\n");
 x_277 = l_IO_eprintln___at___00__private_Lean_Shell_0__Lean_shellMain_spec__1(x_276);
 printf("[Lean Shell Main] 1525\n");
 if (lean_obj_tag(x_277) == 0)
-printf("[Lean Shell Main] 1526\n");
 {
 printf("[Lean Shell Main] 1527\n");
 uint8_t x_278; lean_object* x_279; 
@@ -5492,7 +5329,6 @@ printf("[Lean Shell Main] 1530\n");
 x_279 = lean_display_help(x_278);
 printf("[Lean Shell Main] 1531\n");
 if (lean_obj_tag(x_279) == 0)
-printf("[Lean Shell Main] 1532\n");
 {
 printf("[Lean Shell Main] 1533\n");
 uint8_t x_280; 
@@ -5500,7 +5336,6 @@ printf("[Lean Shell Main] 1534\n");
 x_280 = !lean_is_exclusive(x_279);
 printf("[Lean Shell Main] 1535\n");
 if (x_280 == 0)
-printf("[Lean Shell Main] 1536\n");
 {
 printf("[Lean Shell Main] 1537\n");
 lean_object* x_281; lean_object* x_282; 
@@ -5516,7 +5351,6 @@ printf("[Lean Shell Main] 1542\n");
 return x_279;
 printf("[Lean Shell Main] 1543\n");
 }
-printf("[Lean Shell Main] 1544\n");
 else
 {
 printf("[Lean Shell Main] 1546\n");
@@ -5535,7 +5369,6 @@ printf("[Lean Shell Main] 1552\n");
 }
 printf("[Lean Shell Main] 1553\n");
 }
-printf("[Lean Shell Main] 1554\n");
 else
 {
 printf("[Lean Shell Main] 1556\n");
@@ -5544,13 +5377,11 @@ printf("[Lean Shell Main] 1557\n");
 x_285 = !lean_is_exclusive(x_279);
 printf("[Lean Shell Main] 1558\n");
 if (x_285 == 0)
-printf("[Lean Shell Main] 1559\n");
 {
 printf("[Lean Shell Main] 1560\n");
 return x_279;
 printf("[Lean Shell Main] 1561\n");
 }
-printf("[Lean Shell Main] 1562\n");
 else
 {
 printf("[Lean Shell Main] 1564\n");
@@ -5573,7 +5404,6 @@ printf("[Lean Shell Main] 1572\n");
 }
 printf("[Lean Shell Main] 1573\n");
 }
-printf("[Lean Shell Main] 1574\n");
 else
 {
 printf("[Lean Shell Main] 1576\n");
@@ -5582,13 +5412,11 @@ printf("[Lean Shell Main] 1577\n");
 x_288 = !lean_is_exclusive(x_277);
 printf("[Lean Shell Main] 1578\n");
 if (x_288 == 0)
-printf("[Lean Shell Main] 1579\n");
 {
 printf("[Lean Shell Main] 1580\n");
 return x_277;
 printf("[Lean Shell Main] 1581\n");
 }
-printf("[Lean Shell Main] 1582\n");
 else
 {
 printf("[Lean Shell Main] 1584\n");
@@ -5611,7 +5439,6 @@ printf("[Lean Shell Main] 1592\n");
 }
 printf("[Lean Shell Main] 1593\n");
 }
-printf("[Lean Shell Main] 1594\n");
 else
 {
 printf("[Lean Shell Main] 1596\n");
@@ -5626,7 +5453,6 @@ printf("[Lean Shell Main] 1600\n");
 }
 printf("[Lean Shell Main] 1601\n");
 }
-printf("[Lean Shell Main] 1602\n");
 else
 {
 printf("[Lean Shell Main] 1604\n");
@@ -5647,7 +5473,6 @@ printf("[Lean Shell Main] 1611\n");
 {
 printf("[Lean Shell Main] 1612\n");
 if (lean_obj_tag(x_1) == 0)
-printf("[Lean Shell Main] 1613\n");
 {
 printf("[Lean Shell Main] 1614\n");
 lean_object* x_293; 
@@ -5663,7 +5488,6 @@ printf("[Lean Shell Main] 1619\n");
 goto block_291;
 printf("[Lean Shell Main] 1620\n");
 }
-printf("[Lean Shell Main] 1621\n");
 else
 {
 printf("[Lean Shell Main] 1623\n");
@@ -5708,7 +5532,6 @@ printf("[Lean Shell Main] 1642\n");
 lean_dec(x_2);
 printf("[Lean Shell Main] 1643\n");
 if (x_7 == 0)
-printf("[Lean Shell Main] 1644\n");
 {
 printf("[Lean Shell Main] 1645\n");
 x_292 = lean_box(0);
@@ -5716,12 +5539,10 @@ printf("[Lean Shell Main] 1646\n");
 goto block_297;
 printf("[Lean Shell Main] 1647\n");
 }
-printf("[Lean Shell Main] 1648\n");
 else
 {
 printf("[Lean Shell Main] 1650\n");
 if (x_9 == 0)
-printf("[Lean Shell Main] 1651\n");
 {
 printf("[Lean Shell Main] 1652\n");
 x_292 = lean_box(0);
@@ -5729,7 +5550,6 @@ printf("[Lean Shell Main] 1653\n");
 goto block_297;
 printf("[Lean Shell Main] 1654\n");
 }
-printf("[Lean Shell Main] 1655\n");
 else
 {
 printf("[Lean Shell Main] 1657\n");
@@ -5750,7 +5570,6 @@ printf("[Lean Shell Main] 1664\n");
 lean_dec(x_10);
 printf("[Lean Shell Main] 1665\n");
 if (x_6 == 0)
-printf("[Lean Shell Main] 1666\n");
 {
 printf("[Lean Shell Main] 1667\n");
 lean_object* x_299; 
@@ -5764,7 +5583,6 @@ printf("[Lean Shell Main] 1671\n");
 goto block_34;
 printf("[Lean Shell Main] 1672\n");
 }
-printf("[Lean Shell Main] 1673\n");
 else
 {
 printf("[Lean Shell Main] 1675\n");
@@ -5777,7 +5595,6 @@ printf("[Lean Shell Main] 1678\n");
 x_301 = l_IO_FS_Stream_lines(x_300);
 printf("[Lean Shell Main] 1679\n");
 if (lean_obj_tag(x_301) == 0)
-printf("[Lean Shell Main] 1680\n");
 {
 printf("[Lean Shell Main] 1681\n");
 lean_object* x_302; 
@@ -5795,7 +5612,6 @@ printf("[Lean Shell Main] 1687\n");
 goto block_34;
 printf("[Lean Shell Main] 1688\n");
 }
-printf("[Lean Shell Main] 1689\n");
 else
 {
 printf("[Lean Shell Main] 1691\n");
@@ -5804,13 +5620,11 @@ printf("[Lean Shell Main] 1692\n");
 x_303 = !lean_is_exclusive(x_301);
 printf("[Lean Shell Main] 1693\n");
 if (x_303 == 0)
-printf("[Lean Shell Main] 1694\n");
 {
 printf("[Lean Shell Main] 1695\n");
 return x_301;
 printf("[Lean Shell Main] 1696\n");
 }
-printf("[Lean Shell Main] 1697\n");
 else
 {
 printf("[Lean Shell Main] 1699\n");
@@ -5919,7 +5733,6 @@ printf("[Lean Shell Main] 1750\n");
 x_313 = lean_nat_dec_eq(x_311, x_312);
 printf("[Lean Shell Main] 1751\n");
 if (x_313 == 0)
-printf("[Lean Shell Main] 1752\n");
 {
 printf("[Lean Shell Main] 1753\n");
 size_t x_314; size_t x_315; size_t x_316; lean_object* x_317; 
@@ -5939,7 +5752,6 @@ printf("[Lean Shell Main] 1760\n");
 goto block_308;
 printf("[Lean Shell Main] 1761\n");
 }
-printf("[Lean Shell Main] 1762\n");
 else
 {
 printf("[Lean Shell Main] 1764\n");
