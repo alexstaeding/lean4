@@ -2478,7 +2478,7 @@ static lean_object* _init_l___private_Lean_Shell_0__Lean_shellMain___closed__19(
 _start:
 {
 lean_object* x_1; 
-x_1 = l___private_Lean_Shell_0__Lean_timeout;
+x_1 = lean_box(30000);
 return x_1;
 }
 }
@@ -2486,7 +2486,7 @@ static lean_object* _init_l___private_Lean_Shell_0__Lean_shellMain___closed__20(
 _start:
 {
 lean_object* x_1; 
-x_1 = l___private_Lean_Shell_0__Lean_maxMemory;
+x_1 = lean_box(1024*1024*1024);
 return x_1;
 }
 }
