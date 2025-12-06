@@ -14,7 +14,7 @@ project(LEAN CXX C)
 set(LEAN_VERSION_MAJOR 4)
 set(LEAN_VERSION_MINOR 27)
 set(LEAN_VERSION_PATCH 0)
-set(LEAN_VERSION_IS_RELEASE 0)  # This number is 1 in the release revision, and 0 otherwise.
+set(LEAN_VERSION_IS_RELEASE 1)  # This number is 1 in the release revision, and 0 otherwise.
 set(LEAN_SPECIAL_VERSION_DESC "" CACHE STRING "Additional version description like 'nightly-2018-03-11'")
 set(LEAN_VERSION_STRING "${LEAN_VERSION_MAJOR}.${LEAN_VERSION_MINOR}.${LEAN_VERSION_PATCH}")
 if (LEAN_SPECIAL_VERSION_DESC)
@@ -139,7 +139,7 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
 
     # From https://emscripten.org/docs/compiling/WebAssembly.html#backends:
     # > The simple and safe thing is to pass all -s flags at both compile and link time.
-    set(EMSCRIPTEN_SETTINGS "-s ALLOW_MEMORY_GROWTH=1 -fwasm-exceptions -pthread -fPIC -sASSERTIONS=2 -sRUNTIME_DEBUG=1 -sSTACK_SIZE=1gb -sINITIAL_MEMORY=2gb -sTOTAL_STACK=1gb -sSAFE_HEAP=1 -fno-omit-frame-pointer")
+    set(EMSCRIPTEN_SETTINGS "-s ALLOW_MEMORY_GROWTH=1 -fwasm-exceptions -pthread -fPIC -sASSERTIONS=2 -sRUNTIME_DEBUG=1 -sSTACK_SIZE=1gb -sINITIAL_MEMORY=2gb -sTOTAL_STACK=1gb -sSAFE_HEAP=1 -fno-omit-frame-pointer -sMEMORY64=1")
     string(APPEND LEANC_EXTRA_CC_FLAGS " -pthread -fPIC -fwasm-exceptions --profiling ${EMSCRIPTEN_SETTINGS}")
     string(APPEND LEAN_EXTRA_CXX_FLAGS " -fPIC -fwasm-exceptions --profiling -D LEAN_EMSCRIPTEN ${EMSCRIPTEN_SETTINGS}")
     string(APPEND LEAN_EXTRA_LINKER_FLAGS " -fPIC -fwasm-exceptions --profiling ${EMSCRIPTEN_SETTINGS}")
