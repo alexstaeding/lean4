@@ -94,11 +94,11 @@ where
   prior to the next whitespace.
   -/
   upToWs (nonempty : Bool) : Parser String := fun it =>
-    let it' := (it.2.find? fun (c : Char) => c.isWhitespace).getD it.1.endValidPos
+    let it' := (it.2.find? fun (c : Char) => c.isWhitespace).getD it.1.endPos
     if nonempty && it' == it.2 then
       .error ⟨_, it'⟩ (.other "Expected a nonempty string")
     else
-      .success ⟨_, it'⟩ (it.1.replaceStartEnd! it.2 it').copy
+      .success ⟨_, it'⟩ (it.1.slice! it.2 it').copy
 
   /-- Parses a named attribute, and returns its name and value. -/
   namedAttr : Parser (String × String) := attempt do
@@ -152,10 +152,10 @@ deriving Repr, Inhabited
 
 /-- Creates an iterator for validation from the raw contents of an error explanation. -/
 private def ValidationState.ofSource (input : String) : ValidationState where
-  lines := input.splitOn "\n"
+  lines := input.split '\n'
+    |>.filter (!·.trimAscii.isEmpty)
+    |>.toStringArray
     |>.zipIdx
-    |>.filter (!·.1.trimAscii.isEmpty)
-    |>.toArray
 
 -- Workaround to account for the fact that `Input` expects "EOF" to be a valid position
 private def ValidationState.get (s : ValidationState) :=
@@ -277,7 +277,7 @@ where
   fence (ticksToClose : Option Nat := none) := attempt do
     let line ← any
     if line.startsWith "```" then
-      let numTicks := line.takeWhile (· == '`') |>.copy |>.length
+      let numTicks := line.takeWhile (· == '`') |>.utf8ByteSize -- this makes sense because we know the slice consists only of ticks
       match ticksToClose with
       | none => return (numTicks, line.drop numTicks)
       | some n =>
