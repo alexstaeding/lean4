@@ -5739,7 +5739,7 @@ lean_object* x_310; lean_object* x_311; lean_object* x_312; uint8_t x_313;
 printf("[Lean Shell Main] 1747\n");
 x_310 = l___private_Lean_Shell_0__Lean_shellMain___closed__19;
 printf("[Lean Shell Main] 1748\n");
-x_311 = l_Lean_Option_get___at___00__private_Lean_Shell_0__Lean_shellMain_spec__3(x_10, x_310);
+x_311 = lean_box(30000);
 printf("[Lean Shell Main] 1749\n");
 x_312 = lean_unsigned_to_nat(0u);
 printf("[Lean Shell Main] 1750\n");
