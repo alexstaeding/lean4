@@ -175,11 +175,6 @@
                     substituteInPlace "$file" \
                       --replace-fail '/usr/bin/env bash' '${pkgs.bash}/bin/bash'
                   done
-
-                  substituteInPlace stage0/src/stdlib.make.in src/stdlib.make.in \
-                    --replace-fail \
-                      '+"$'{LEAN_BIN}'/leanmake" -C lake lib lib.export ../$'{LIB}'/temp/LakeMain.o.export  PKG=Lake $(LEANMAKE_OPTS) OUT="../$'{LIB}'" LIB_OUT="../$'{LIB}'/lean" TEMP_OUT="../$'{LIB}'/temp" OLEAN_OUT="../$'{LIB}'/lean" EXTRA_SRC_ROOTS=LakeMain.lean' \
-                      '+"$'{LEAN_BIN}'/leanmake" -C lake lib lib.export $'{CMAKE_BINARY_DIR}'/$'{LIB}'/temp/LakeMain.o.export  PKG=Lake $(LEANMAKE_OPTS) OUT="$'{CMAKE_BINARY_DIR}'/$'{LIB}'" LIB_OUT="$'{CMAKE_BINARY_DIR}'/$'{LIB}'/lean" TEMP_OUT="$'{CMAKE_BINARY_DIR}'/$'{LIB}'/temp" OLEAN_OUT="$'{CMAKE_BINARY_DIR}'/$'{LIB}'/lean" EXTRA_SRC_ROOTS=LakeMain.lean'
                 '';
 
               preConfigure = ''
