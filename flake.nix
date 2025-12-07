@@ -176,28 +176,6 @@
                       --replace-fail '/usr/bin/env bash' '${pkgs.bash}/bin/bash'
                   done
 
-                  # substituteInPlace stage0/src/stdlib.make.in src/stdlib.make.in \
-                  #   --replace-fail \
-                  #     'OUT="$'{LIB}'"' \
-                  #     'OUT="$'{CMAKE_BINARY_DIR}'/$'{LIB}'"'
-
-                  substituteInPlace stage0/src/lean.mk.in src/lean.mk.in \
-                    --replace-fail \
-                      'TEMP_OUT = $(OUT)/temp' \
-                      'TEMP_OUT = $(OUT)/temp
-                        $(info DEBUG: OUT=$(OUT) TEMP_OUT=$(TEMP_OUT) PWD=$(shell pwd))'
-
-                  substituteInPlace stage0/src/stdlib.make.in src/stdlib.make.in \
-                    --replace-fail \
-                      'OUT="$'{LIB}'"' \
-                      'OUT="$'{CMAKE_BINARY_DIR}'/$'{LIB}'"' \
-                    --replace-fail \
-                      'LIB_OUT="$'{LIB}'/lean"' \
-                      'LIB_OUT="$'{CMAKE_BINARY_DIR}'/$'{LIB}'/lean"' \
-                    --replace-fail \
-                      'OLEAN_OUT="$'{LIB}'/lean"' \
-                      'OLEAN_OUT="$'{CMAKE_BINARY_DIR}'/$'{LIB}'/lean"'
-
                   substituteInPlace stage0/src/stdlib.make.in src/stdlib.make.in \
                     --replace-fail \
                       '+"$'{LEAN_BIN}'/leanmake" -C lake lib lib.export ../$'{LIB}'/temp/LakeMain.o.export  PKG=Lake $(LEANMAKE_OPTS) OUT="../$'{LIB}'" LIB_OUT="../$'{LIB}'/lean" TEMP_OUT="../$'{LIB}'/temp" OLEAN_OUT="../$'{LIB}'/lean" EXTRA_SRC_ROOTS=LakeMain.lean' \
