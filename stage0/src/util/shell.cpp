@@ -400,28 +400,9 @@ extern "C" LEAN_EXPORT int lean_main(int argc, char ** argv) {
         var cwd = process.cwd();
         var path = require('path');
         var parent = path.dirname(cwd);
-        console.log("[lean-wasm-stage0] process.cwd() =", cwd);
-        console.log("[lean-wasm-stage0] parent dir =", parent);
-        console.log("[lean-wasm-stage0] FS.cwd() =", FS.cwd());
-        console.log("[lean-wasm-stage0] Creating FS dir ", parent);
         FS.mkdirTree(parent);
-        console.log("[lean-wasm-stage0] Created FS dir ", parent);
-        // We cannot mount /, see https://github.com/emscripten-core/emscripten/issues/2040
-        // FS.mount(NODEFS, { root: "/home" }, "/home");
-        console.log("[lean-wasm-stage0] Mounting parent dir =", parent, "FS.cwd() =", FS.cwd());
-        try {
-            FS.mount(NODEFS, { root: parent }, parent);
-        } catch (e) {
-            console.error("[lean-wasm-stage0] Failed to mount ", parent, e);
-        }
-        console.log("[lean-wasm-stage0] Mounted process.cwd() =", process.cwd(), "FS.cwd() =", FS.cwd());
-        // FS.chdir(process.cwd());
-        try {
-            FS.chdir(process.cwd());
-            console.log("[lean-wasm-stage0] FS.cwd() after chdir =", FS.cwd());
-        } catch (e) {
-            console.error("[lean-wasm-stage0] FS.chdir(process.cwd()) failed:", e, "cwd was:", process.cwd());
-        }
+        FS.mount(NODEFS, { root: parent }, parent);
+        FS.chdir(process.cwd());
     );
 #elif defined(LEAN_WINDOWS)
     // "best practice" according to https://docs.microsoft.com/en-us/windows/win32/api/errhandlingapi/nf-errhandlingapi-seterrormode
