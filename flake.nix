@@ -198,14 +198,13 @@
                   -DUSE_LAKE="off" \
                   -DUSE_MIMALLOC="off" \
                   -DCMAKE_EXE_LINKER_FLAGS="-fPIC" \
-                  -DCMAKE_SHARED_LINKER_FLAGS="-fPIC" \
-                  -DCMAKE_BUILD_TYPE=Debug
+                  -DCMAKE_SHARED_LINKER_FLAGS="-fPIC"
 
                 runHook postConfigure
               '';
 
               buildPhase = ''
-                export EMCC_DEBUG=2
+                # export EMCC_DEBUG=2
                 runHook preBuild
                 export CFLAGS="-fPIC"
                 export CXXFLAGS="-fPIC"

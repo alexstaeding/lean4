@@ -1333,53 +1333,33 @@ return x_6;
 LEAN_EXPORT lean_object* l_Lean_Option_get___at___00Lean_withTraceNode___at___00Lean_executeReservedNameAction_spec__1_spec__8(lean_object* x_1, lean_object* x_2) {
 _start:
 {
-printf("[RNA] 1");
 lean_object* x_3; lean_object* x_4; lean_object* x_5; 
-printf("[RNA] 2");
 x_3 = lean_ctor_get(x_2, 0);
-printf("[RNA] 3");
 x_4 = lean_ctor_get(x_2, 1);
-printf("[RNA] 4");
 x_5 = l_Lean_KVMap_find(x_1, x_3);
-printf("[RNA] 5");
 if (lean_obj_tag(x_5) == 0)
 {
-printf("[RNA] 7");
 lean_inc(x_4);
-printf("[RNA] 8");
 return x_4;
 }
 else
 {
-printf("[RNA] 12");
 lean_object* x_6; 
-printf("[RNA] 13");
 x_6 = lean_ctor_get(x_5, 0);
-printf("[RNA] 14");
 lean_inc(x_6);
-printf("[RNA] 15");
 lean_dec_ref(x_5);
-printf("[RNA] 16");
 if (lean_obj_tag(x_6) == 3)
 {
-printf("[RNA] 18");
 lean_object* x_7; 
-printf("[RNA] 19");
 x_7 = lean_ctor_get(x_6, 0);
-printf("[RNA] 20");
 lean_inc(x_7);
-printf("[RNA] 21");
 lean_dec_ref(x_6);
-printf("[RNA] 22");
 return x_7;
 }
 else
 {
-printf("[RNA] 26");
 lean_dec(x_6);
-printf("[RNA] 27");
 lean_inc(x_4);
-printf("[RNA] 28");
 return x_4;
 }
 }
