@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.11)
 
 option(USE_MIMALLOC "use mimalloc" ON)
 
+message(STATUS "CMAKE_SYSTEM_NAME in root CMakeLists.txt: ${CMAKE_SYSTEM_NAME}")
+message(STATUS "CMAKE_PREFIX_PATH in root CMakeLists.txt: ${CMAKE_PREFIX_PATH}")
+message(STATUS "CMAKE_PREFIX_PATH in root CMakeLists.txt: ${CMAKE_PREFIX_PATH}")
 # store all variables passed on the command line into CL_ARGS so we can pass them to the stage builds
 # https://stackoverflow.com/a/48555098/161659
 # MUST be done before call to 'project'
@@ -9,15 +12,20 @@ option(USE_MIMALLOC "use mimalloc" ON)
 # Use `STAGE0_` prefix to pass variables to stage0 explicitly.
 get_cmake_property(vars CACHE_VARIABLES)
 foreach(var ${vars})
+  message(STATUS "Cache var ${var}=${${var}}")
   get_property(currentHelpString CACHE "${var}" PROPERTY HELPSTRING)
   if("${var}" MATCHES "STAGE0_(.*)")
     list(APPEND STAGE0_ARGS "-D${CMAKE_MATCH_1}=${${var}}")
   elseif("${var}" MATCHES "STAGE1_(.*)")
     list(APPEND STAGE1_ARGS "-D${CMAKE_MATCH_1}=${${var}}")
+  elseif(("${var}" MATCHES "CMAKE_.*") AND NOT ("${var}" MATCHES "CMAKE_BUILD_TYPE") AND NOT ("${var}" MATCHES "CMAKE_HOME_DIRECTORY"))
+    message(STATUS "Appending ${var} to platform arg=${${var}}s")
+    list(APPEND PLATFORM_ARGS "-D${var}=${${var}}")
   elseif("${currentHelpString}" MATCHES "No help, variable specified on the command line." OR "${currentHelpString}" STREQUAL "")
     list(APPEND CL_ARGS "-D${var}=${${var}}")
-    if("${var}" MATCHES "USE_GMP|CHECK_OLEAN_VERSION|LEAN_VERSION_.*|LEAN_SPECIAL_VERSION_DESC")
+    if("${var}" MATCHES "USE_GMP|GMP_INCLUDE_DIR|GMP_INSTALL_PREFIX|CHECK_OLEAN_VERSION|LEAN_VERSION_.*|LEAN_SPECIAL_VERSION_DESC")
       # must forward options that generate incompatible .olean format
+      message(STATUS "STAGE0_ARGS ${var}=${${var}}")
       list(APPEND STAGE0_ARGS "-D${var}=${${var}}")
     elseif("${var}" MATCHES "LLVM*|PKG_CONFIG|USE_LAKE|USE_MIMALLOC")
       list(APPEND STAGE0_ARGS "-D${var}=${${var}}")
@@ -25,8 +33,6 @@ foreach(var ${vars})
   elseif("${var}" MATCHES "USE_MIMALLOC")
     list(APPEND CL_ARGS "-D${var}=${${var}}")
     list(APPEND STAGE0_ARGS "-D${var}=${${var}}")
-  elseif(("${var}" MATCHES "CMAKE_.*") AND NOT ("${var}" MATCHES "CMAKE_BUILD_TYPE") AND NOT ("${var}" MATCHES "CMAKE_HOME_DIRECTORY"))
-    list(APPEND PLATFORM_ARGS "-D${var}=${${var}}")
   endif()
 endforeach()
 
@@ -105,7 +111,7 @@ ExternalProject_add(stage1
   SOURCE_DIR "${LEAN_SOURCE_DIR}"
   SOURCE_SUBDIR src
   BINARY_DIR stage1
-  CMAKE_ARGS -DSTAGE=1 -DPREV_STAGE=${CMAKE_BINARY_DIR}/stage0 -DPREV_STAGE_CMAKE_EXECUTABLE_SUFFIX=${STAGE0_CMAKE_EXECUTABLE_SUFFIX} ${CL_ARGS} ${STAGE1_ARGS}
+  CMAKE_ARGS -DSTAGE=1 -DPREV_STAGE=${CMAKE_BINARY_DIR}/stage0 -DPREV_STAGE_CMAKE_EXECUTABLE_SUFFIX=${STAGE0_CMAKE_EXECUTABLE_SUFFIX} ${CL_ARGS} ${STAGE1_ARGS} ${PLATFORM_ARGS}
   BUILD_ALWAYS ON
   INSTALL_COMMAND ""
   DEPENDS ${EXTRA_DEPENDS}
@@ -115,7 +121,7 @@ ExternalProject_add(stage2
   SOURCE_DIR "${LEAN_SOURCE_DIR}"
   SOURCE_SUBDIR src
   BINARY_DIR stage2
-  CMAKE_ARGS -DSTAGE=2 -DPREV_STAGE=${CMAKE_BINARY_DIR}/stage1 -DPREV_STAGE_CMAKE_EXECUTABLE_SUFFIX=${CMAKE_EXECUTABLE_SUFFIX} ${CL_ARGS}
+  CMAKE_ARGS -DSTAGE=2 -DPREV_STAGE=${CMAKE_BINARY_DIR}/stage1 -DPREV_STAGE_CMAKE_EXECUTABLE_SUFFIX=${CMAKE_EXECUTABLE_SUFFIX} ${CL_ARGS} ${PLATFORM_ARGS}
   BUILD_ALWAYS ON
   INSTALL_COMMAND ""
   DEPENDS stage1
@@ -126,7 +132,7 @@ ExternalProject_add(stage3
   SOURCE_DIR "${LEAN_SOURCE_DIR}"
   SOURCE_SUBDIR src
   BINARY_DIR stage3
-  CMAKE_ARGS -DSTAGE=3 -DPREV_STAGE=${CMAKE_BINARY_DIR}/stage2 -DPREV_STAGE_CMAKE_EXECUTABLE_SUFFIX=${CMAKE_EXECUTABLE_SUFFIX} ${CL_ARGS}
+  CMAKE_ARGS -DSTAGE=3 -DPREV_STAGE=${CMAKE_BINARY_DIR}/stage2 -DPREV_STAGE_CMAKE_EXECUTABLE_SUFFIX=${CMAKE_EXECUTABLE_SUFFIX} ${CL_ARGS} ${PLATFORM_ARGS}
   BUILD_ALWAYS ON
   INSTALL_COMMAND ""
   DEPENDS stage2

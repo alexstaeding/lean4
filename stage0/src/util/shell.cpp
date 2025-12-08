@@ -397,9 +397,11 @@ extern "C" LEAN_EXPORT int lean_main(int argc, char ** argv) {
             ENV["LEAN_PATH"] = lean_path;
         }
 
-        // We cannot mount /, see https://github.com/emscripten-core/emscripten/issues/2040
-        FS.mount(NODEFS, { root: "/home" }, "/home");
-        FS.mount(NODEFS, { root: "/tmp" }, "/tmp");
+        var cwd = process.cwd();
+        var path = require('path');
+        var parent = path.dirname(cwd);
+        FS.mkdirTree(parent);
+        FS.mount(NODEFS, { root: parent }, parent);
         FS.chdir(process.cwd());
     );
 #elif defined(LEAN_WINDOWS)

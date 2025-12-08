@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 cmake_policy(SET CMP0054 NEW)
 cmake_policy(SET CMP0110 NEW)
+message(STATUS "STAGE = ${STAGE}")
+message(STATUS "CMAKE_BINARY_DIR = ${CMAKE_BINARY_DIR}")
 if(NOT (${CMAKE_GENERATOR} MATCHES "Unix Makefiles"))
   message(FATAL_ERROR "The only supported CMake generator at the moment is 'Unix Makefiles'")
 endif()
@@ -137,10 +139,10 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
 
     # From https://emscripten.org/docs/compiling/WebAssembly.html#backends:
     # > The simple and safe thing is to pass all -s flags at both compile and link time.
-    set(EMSCRIPTEN_SETTINGS "-s ALLOW_MEMORY_GROWTH=1 -fwasm-exceptions -pthread -flto")
-    string(APPEND LEANC_EXTRA_CC_FLAGS " -pthread")
-    string(APPEND LEAN_EXTRA_CXX_FLAGS " -D LEAN_EMSCRIPTEN ${EMSCRIPTEN_SETTINGS}")
-    string(APPEND LEAN_EXTRA_LINKER_FLAGS " ${EMSCRIPTEN_SETTINGS}")
+    set(EMSCRIPTEN_SETTINGS "-s ALLOW_MEMORY_GROWTH=1 -fwasm-exceptions -pthread -fPIC -sSTACK_SIZE=1073741824 -sASYNCIFY_STACK_SIZE=268435456 -sINITIAL_MEMORY=2147483648 -sMEMORY64=1")
+    string(APPEND LEANC_EXTRA_CC_FLAGS " -pthread -fPIC -fwasm-exceptions --profiling ${EMSCRIPTEN_SETTINGS}")
+    string(APPEND LEAN_EXTRA_CXX_FLAGS " -fPIC -fwasm-exceptions --profiling -D LEAN_EMSCRIPTEN ${EMSCRIPTEN_SETTINGS}")
+    string(APPEND LEAN_EXTRA_LINKER_FLAGS " -fPIC -fwasm-exceptions --profiling ${EMSCRIPTEN_SETTINGS}")
 endif()
 
 # Added for CTest

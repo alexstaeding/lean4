@@ -1,6 +1,7 @@
 // Lean compiler output
 // Module: Lean.ReservedNameAction
 // Imports: public import Lean.CoreM
+#include <stdio.h>
 #include <lean/lean.h>
 #if defined(__clang__)
 #pragma clang diagnostic ignored "-Wunused-parameter"

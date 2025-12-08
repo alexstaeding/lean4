@@ -137,10 +137,12 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Emscripten")
 
     # From https://emscripten.org/docs/compiling/WebAssembly.html#backends:
     # > The simple and safe thing is to pass all -s flags at both compile and link time.
-    set(EMSCRIPTEN_SETTINGS "-s ALLOW_MEMORY_GROWTH=1 -fwasm-exceptions -pthread -flto")
-    string(APPEND LEANC_EXTRA_CC_FLAGS " -pthread")
-    string(APPEND LEAN_EXTRA_CXX_FLAGS " -D LEAN_EMSCRIPTEN ${EMSCRIPTEN_SETTINGS}")
-    string(APPEND LEAN_EXTRA_LINKER_FLAGS " ${EMSCRIPTEN_SETTINGS}")
+    set(EMSCRIPTEN_SETTINGS "-s ALLOW_MEMORY_GROWTH=1 -fwasm-exceptions -pthread -fPIC -sSTACK_SIZE=1073741824 -sASYNCIFY_STACK_SIZE=268435456 -sINITIAL_MEMORY=2147483648 -sMEMORY64=1")
+    string(APPEND LEANC_EXTRA_CC_FLAGS " -pthread -fPIC -fwasm-exceptions --profiling ${EMSCRIPTEN_SETTINGS}")
+    string(APPEND LEAN_EXTRA_CXX_FLAGS " -fPIC -fwasm-exceptions --profiling -D LEAN_EMSCRIPTEN ${EMSCRIPTEN_SETTINGS}")
+    string(APPEND LEAN_EXTRA_LINKER_FLAGS " -fPIC -fwasm-exceptions --profiling ${EMSCRIPTEN_SETTINGS}")
+    message(STATUS "CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME}")
+    message(STATUS "LEAN_EXTRA_CXX_FLAGS: ${LEAN_EXTRA_CXX_FLAGS}")
 endif()
 
 # Added for CTest
@@ -256,7 +258,7 @@ endif ()
 if("${USE_GMP}" MATCHES "ON")
   set(CMAKE_CXX_FLAGS                "-D LEAN_USE_GMP ${CMAKE_CXX_FLAGS}")
   if("${CMAKE_SYSTEM_NAME}" MATCHES "Emscripten")
-    include_directories(${GMP_INSTALL_PREFIX}/include)
+    include_directories(${GMP_INCLUDE_DIR})
     set(GMP_LIBRARIES "${GMP_INSTALL_PREFIX}/lib/libgmp.a")
   else()
     # GMP
