@@ -47,10 +47,6 @@ find_program(LLD_PATH lld)
 if(LLD_PATH)
   string(APPEND LEAN_EXTRA_LINKER_FLAGS_DEFAULT " -fuse-ld=lld")
 endif()
-if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
-  # Create space in install names so they can be patched later in Nix.
-  string(APPEND LEAN_EXTRA_LINKER_FLAGS_DEFAULT " -headerpad_max_install_names")
-endif()
 
 set(LEAN_EXTRA_LINKER_FLAGS ${LEAN_EXTRA_LINKER_FLAGS_DEFAULT} CACHE STRING "Additional flags used by the linker")
 set(
@@ -552,13 +548,14 @@ if(CMAKE_SYSTEM_NAME MATCHES "Linux")
   string(APPEND CMAKE_EXE_LINKER_FLAGS " -Wl,-rpath=$ORIGIN/../lib:$ORIGIN/../lib/lean")
 elseif(CMAKE_SYSTEM_NAME MATCHES "Darwin")
   string(APPEND CMAKE_CXX_FLAGS " -ftls-model=initial-exec")
-  string(APPEND INIT_SHARED_LINKER_FLAGS " -install_name @rpath/libInit_shared.dylib")
-  string(APPEND LEANSHARED_1_LINKER_FLAGS " -install_name @rpath/libleanshared_1.dylib")
-  string(APPEND LEANSHARED_2_LINKER_FLAGS " -install_name @rpath/libleanshared_2.dylib")
-  string(APPEND LEANSHARED_LINKER_FLAGS " -install_name @rpath/libleanshared.dylib")
+  # nix store paths are long, so we use -headerpad to create space in install names so they can be patched later
+  string(APPEND INIT_SHARED_LINKER_FLAGS " -install_name @rpath/libInit_shared.dylib -Wl,-headerpad_max_install_names")
+  string(APPEND LEANSHARED_1_LINKER_FLAGS " -install_name @rpath/libleanshared_1.dylib -Wl,-headerpad_max_install_names")
+  string(APPEND LEANSHARED_2_LINKER_FLAGS " -install_name @rpath/libleanshared_2.dylib -Wl,-headerpad_max_install_names")
+  string(APPEND LEANSHARED_LINKER_FLAGS " -install_name @rpath/libleanshared.dylib -Wl,-headerpad_max_install_names")
   string(
     APPEND LAKESHARED_LINKER_FLAGS
-    " -Wl,-force_load,${CMAKE_BINARY_DIR}/lib/lean/libLake.a.export -install_name @rpath/libLake_shared.dylib"
+    " -Wl,-force_load,${CMAKE_BINARY_DIR}/lib/lean/libLake.a.export -install_name @rpath/libLake_shared.dylib -Wl,-headerpad_max_install_names"
   )
   string(APPEND CMAKE_EXE_LINKER_FLAGS " -Wl,-rpath,@executable_path/../lib -Wl,-rpath,@executable_path/../lib/lean")
 elseif(CMAKE_SYSTEM_NAME MATCHES "Emscripten")

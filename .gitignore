@@ -35,3 +35,4 @@ wdIn.txt
 wdOut.txt
 downstream_releases/
 .claude/worktrees/
+.direnv
